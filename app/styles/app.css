@@ -1289,10 +1289,10 @@ video {
 }
 
 @font-face {
-  font-family: "Victor Mono";
+  font-family: 'Victor Mono';
 
-  src: url("/fonts/victormono/woff2/VictorMono-Regular.woff2") format("woff2"),
-    url("/fonts/victormono/woff/VictorMono-Regular.woff") format("woff");
+  src: url('/fonts/victormono/woff2/VictorMono-Regular.woff2') format('woff2'),
+    url('/fonts/victormono/woff/VictorMono-Regular.woff') format('woff');
 
   font-weight: 400;
 
@@ -1302,10 +1302,10 @@ video {
 }
 
 @font-face {
-  font-family: "Victor Mono";
+  font-family: 'Victor Mono';
 
-  src: url("/fonts/victormono/woff2/VictorMono-Italic.woff2") format("woff2"),
-    url("/fonts/victormono/woff/VictorMono-Italic.woff") format("woff");
+  src: url('/fonts/victormono/woff2/VictorMono-Italic.woff2') format('woff2'),
+    url('/fonts/victormono/woff/VictorMono-Italic.woff') format('woff');
 
   font-weight: 400;
 
@@ -1315,10 +1315,10 @@ video {
 }
 
 @font-face {
-  font-family: "Victor Mono";
+  font-family: 'Victor Mono';
 
-  src: url("/fonts/victormono/woff2/VictorMono-Bold.woff2") format("woff2"),
-    url("/fonts/victormono/woff/VictorMono-Bold.woff") format("woff");
+  src: url('/fonts/victormono/woff2/VictorMono-Bold.woff2') format('woff2'),
+    url('/fonts/victormono/woff/VictorMono-Bold.woff') format('woff');
 
   font-weight: 700;
 
@@ -1328,10 +1328,11 @@ video {
 }
 
 @font-face {
-  font-family: "Victor Mono";
+  font-family: 'Victor Mono';
 
-  src: url("/fonts/victormono/woff2/VictorMono-BoldItalic.woff2") format("woff2"),
-    url("/fonts/victormono/woff/VictorMono-BoldItalic.woff") format("woff");
+  src: url('/fonts/victormono/woff2/VictorMono-BoldItalic.woff2')
+      format('woff2'),
+    url('/fonts/victormono/woff/VictorMono-BoldItalic.woff') format('woff');
 
   font-weight: 700;
 

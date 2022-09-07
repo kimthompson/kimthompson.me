@@ -11,10 +11,7 @@ function postFromModule(mod: any) {
 }
 
 export const loader: LoaderFunction = () => {
-  return [
-    postFromModule(firstPost),
-    postFromModule(secondPost),
-  ]
+  return [postFromModule(firstPost), postFromModule(secondPost)]
 }
 
 export default function BlogIndex() {

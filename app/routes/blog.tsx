@@ -5,9 +5,9 @@ import { Outlet } from '@remix-run/react'
 export const links: LinksFunction = () => {
   return [
     {
-      rel: 'stylesheet', 
+      rel: 'stylesheet',
       href: styles,
-    }
+    },
   ]
 }
 
