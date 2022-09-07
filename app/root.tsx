@@ -16,13 +16,13 @@ export const links: LinksFunction = () => {
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
-  title: "New Remix App",
+  title: "Kim Thompson",
   viewport: "width=device-width,initial-scale=1",
 });
 
 export default function App() {
   return (
-    <html lang="en">
+    <html lang="en" className="bg-slate-300 dark:bg-gray-900">
       <head>
         <Meta />
         <Links />
