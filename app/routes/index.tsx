@@ -1,10 +1,4 @@
-import * as firstPost from './blog/testing-at-mpr.mdx'
-import * as secondPost from './blog/on-basecamp.mdx'
-
-import * as firstDraft from './ideas/thoughts-on-stray.mdx'
-import * as secondDraft from './ideas/an-ode-to-victor-mono.mdx'
-import * as thirdDraft from './ideas/swift-ui-for-react-developers.mdx'
-import * as fourthDraft from './ideas/a-rolling-list-of-swiftui-tips-and-tricks.mdx'
+import { data } from '~/utils/processPosts'
 
 import { LoaderFunction } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
@@ -24,17 +18,7 @@ function sortPostsByDate(a: any, b: any) {
   return second - first
 }
 
-export const loader: LoaderFunction = () => {
-  return {
-    posts: [postFromModule(firstPost), postFromModule(secondPost)],
-    drafts: [
-      postFromModule(firstDraft),
-      postFromModule(secondDraft),
-      postFromModule(thirdDraft),
-      postFromModule(fourthDraft),
-    ],
-  }
-}
+export const loader: LoaderFunction = () => data
 
 export default function Index() {
   const data = useLoaderData()
@@ -44,7 +28,7 @@ export default function Index() {
       <h2 className="font-heading text-3xl italic text-gray-900 dark:text-slate-100 px-2 pb-6">
         Recent Posts
       </h2>
-      <Posts posts={data.posts.sort(sortPostsByDate)} />
+      <Posts posts={data.posts} />
 
       <h2 className="font-heading text-3xl italic text-gray-900 dark:text-slate-100 px-2 pb-6">
         Drafts{' '}
@@ -58,7 +42,7 @@ export default function Index() {
           </a>
         </span>
       </h2>
-      <Posts posts={data.drafts.sort(sortPostsByDate)} isDraft={true} />
+      <Posts posts={data.drafts} isDraft={true} />
     </main>
   )
 }
