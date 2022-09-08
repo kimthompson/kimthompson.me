@@ -1,4 +1,4 @@
-import styles from 'highlight.js/styles/tokyo-night-dark.css'
+import styles from 'highlight.js/styles/base16/papercolor-dark.css'
 import { LinksFunction } from '@remix-run/node'
 import { Outlet } from '@remix-run/react'
 
@@ -14,7 +14,7 @@ export const links: LinksFunction = () => {
 export default function Blog() {
   return (
     <div className="flex justify-center">
-      <article className="prose lg:prose-xl py-10">
+      <article className="prose lg:prose-xl prose-slate dark:prose-invert prose-img:rounded-md  prose-headings:font-heading prose-headings:italic prose-headings:font-light prose-h6:text-pink-400">
         <Outlet />
       </article>
     </div>

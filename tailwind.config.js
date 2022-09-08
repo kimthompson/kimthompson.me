@@ -5,14 +5,6 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
-      colors: {
-        navy: "rgb(17 24 39 / 95%)",
-        // Other colors from the galaxy blobcat:
-        // pink-500,
-        // indigo-900
-        // teal-400
-        // purple-600
-      },
       fontFamily: {
         ...fontFamily,
         'sans': ['Poppins', 'sans-serif'],
@@ -36,6 +28,15 @@ module.exports = {
       animation: {
         wiggle: 'wiggle 0.5s linear infinite',
       },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            a: {
+              color: theme('colors.indigo.500'),
+            },
+          },
+        },
+      }),
     },
   },
   variants: {},

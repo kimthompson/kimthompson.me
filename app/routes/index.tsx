@@ -6,7 +6,7 @@ import * as secondDraft from './ideas/an-ode-to-victor-mono.mdx'
 import * as thirdDraft from './ideas/swift-ui-for-react-developers.mdx'
 
 import { LoaderFunction } from '@remix-run/node'
-import { Link, useLoaderData } from '@remix-run/react'
+import { useLoaderData } from '@remix-run/react'
 
 import Posts from '../components/Posts'
 
@@ -29,9 +29,10 @@ export default function Index() {
 
   return (
     <main className="mx-6 sm:mx-24 lg:mx-36 xl:mx-48 2xl:mx-96">
-      <h2 className="font-heading text-3xl italic text-gray-900 dark:text-slate-300 px-2 pb-4">Recent Posts</h2>
+      <h2 className="font-heading text-3xl italic text-gray-900 dark:text-slate-100 px-2 pb-6">Recent Posts</h2>
       <Posts posts={data.posts} />
-      <h2 className="font-heading text-3xl italic text-gray-900 dark:text-slate-300 px-2 pb-2">Drafts <span className="text-lg not-italic text-indigo-500">Because privacy is for cowards <a href="https://www.eff.org">/s</a></span></h2>
+
+      <h2 className="font-heading text-3xl italic text-gray-900 dark:text-slate-100 px-2 pb-6">Drafts <span className="text-lg not-italic text-indigo-500">Because privacy is for cowards <a className="hover:text-gray-900 dark:hover:text-slate-100" href="https://www.eff.org">/s</a></span></h2>
       <Posts posts={data.drafts} isDraft={true} />
     </main>
   )
