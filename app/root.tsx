@@ -8,8 +8,8 @@ import {
   ScrollRestoration,
 } from '@remix-run/react'
 import { LinksFunction } from '@remix-run/node'
-import clsx from 'clsx';
-import { ThemeProvider, useTheme } from './utils/themeProvider';
+import clsx from 'clsx'
+import { ThemeProvider, useTheme } from './utils/themeProvider'
 
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -27,7 +27,7 @@ export const meta: MetaFunction = () => ({
 })
 
 function App() {
-  const [theme] = useTheme();
+  const [theme] = useTheme()
 
   return (
     <html lang="en" className={clsx(theme)}>
@@ -52,5 +52,5 @@ export default function AppWithProviders() {
     <ThemeProvider>
       <App />
     </ThemeProvider>
-  );
+  )
 }

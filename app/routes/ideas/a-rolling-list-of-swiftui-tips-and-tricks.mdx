@@ -1,0 +1,336 @@
+---
+title: A Rolling List of SwiftUI Tips and Tricks
+date: 2022-07-14
+blurb: I'm keeping track of these for my coworkers, but also for myself and for the talk I'm planning.
+meta:
+  title: A Rolling List of SwiftUI Tips and Tricks
+  date: 2022-07-14
+  blurb: I'm keeping track of these for my coworkers, but also for myself and for the talk I'm planning.
+---
+
+---
+
+###### {attributes.blurb}
+
+---
+
+# {attributes.title}
+
+## My Favorite Markup Tips
+
+#### Creating a parent component that wraps a child
+
+As seen in [this StackOverflow](https://stackoverflow.com/questions/66448843/swiftui-custom-view-wrapper) post, do something like this:
+
+```swift
+struct ParentView <Content: View>: View {
+
+  var content: () -> Content
+
+  init(@ViewBuilder content: @escaping () -> Content) { self.content = content }
+
+  var body: some View {
+    Group {
+    content() // <<: Do anything you want with your imported View here.
+    }
+    .background(.purple)
+  }
+}
+```
+
+Then you can use it like this:
+
+```swift
+struct ContentView: View {
+	 var body: some View {
+				ParentView {
+						VStack {
+								Text("Hello, world!").padding()
+						}
+				}
+	 }
+}
+```
+
+#### Need something to take up the whole width of its parent?
+
+```swift
+.frame(maxWidth: .infinity)
+```
+
+XCode will try to "help" you here by showing you all the attributes you should fill in on `.frame`, but don't be pressured into filling out all of them. Simply fill out the ones you need.
+
+If you need to set a flexible width but a constant height, chain these frame commands:
+
+```swift
+.frame(height: 10)
+.frame(maxWidth: .infinity)
+```
+
+Unfortunately, if you tried to use both the `height` and the `maxWidth` in the same `.frame` call, you would get a crash.
+
+#### Shorthand
+
+When you find yourself tempted to write something like `padding([.top, .bottom], 16)`, you can instead write `padding(.vertical, 16)`. Same for `.horizontal`.
+
+#### Order of Operations
+
+Styles are applied to frames, whether you explicitly define one or not. So if you want a colored background behind a text object spanning the width of a frame, this won't work:
+
+```swift
+Text("Primary Phone Number")
+  .font(fontWith(style: .title2, size: .large))
+  .background(Color(UIColor.whiteSmoke))
+  .frame(maxWidth: .infinity)
+```
+
+...But this will:
+
+```swift
+Text("Primary Phone Number")
+  .font(fontWith(style: .title2, size: .large))
+  .frame(maxWidth: .infinity)
+  .background(Color(UIColor.whiteSmoke))
+```
+
+Similarly, if I wanted to apply two layers of padding to an object, one with color, one without (in the web world this would be more akin to the difference between "padding" and "margin"), you can apply padding to the text object itself then apply to the frame you just surrounded the Text with!
+
+```swift
+Text("Primary Phone Number")
+  .font(fontWith(style: .title2, size: sizeCategory))
+  .padding(.top, 24)
+  .padding(.horizontal, 24)
+  .padding(.bottom, 8)
+  .frame(maxWidth: .infinity, alignment: .leading)
+  .background(Color(UIColor.whiteSmoke))
+  .padding(.top, 16)
+```
+
+#### Test Data & Previews
+
+Previews are one of the nicest things about working with SwiftUI. To render a preview, you need to give it mock parameters. These variables containing mock parameters, in turn, need the `static` attribute so that Previews know they are accessible.
+
+```swift
+struct MobileCardView_Previews: PreviewProvider {
+  static var previews: some View {
+    ZStack(alignment: .top) {
+      Color("whiteSmoke").ignoresSafeArea()
+      MobileCardView(mobileCardData: testMobileCardData)
+          .padding(16)
+    }
+    .previewDisplayName("Family Plan")
+  }
+
+	static let testMobileCardData = MobileCardData(
+	  isPrimaryAccountHolder: true,
+	  notificationMethods: [
+		   NotificationMethod(type: NotificationMethodType.wireless, value: "9999999999", nickname: "Bobby", isPrimary: true, sequenceNumber: 1),
+		   NotificationMethod(type: NotificationMethodType.wireless, value: "9999999998", nickname: "Billy", isPrimary: false, sequenceNumber: 2),
+		   NotificationMethod(type: NotificationMethodType.wireless, value: "9999999997", nickname: "Beau", isPrimary: false, sequenceNumber: 1),
+		   NotificationMethod(type: NotificationMethodType.wireless, value: "9999999996", nickname: "Becker", isPrimary: false, sequenceNumber: 3),
+		   NotificationMethod(type: NotificationMethodType.phone, value: "9999999995", nickname: "Blossom", isPrimary: false, sequenceNumber: 4),
+		   NotificationMethod(type: NotificationMethodType.wireless, value: "9999999994", nickname: "Bode", isPrimary: false, sequenceNumber: 4),
+		]
+	)
+}
+```
+
+Should you wish to see this mocked data in the actual app because, say, mw isn't done yet, you can remove the `private` attribute and refer to it in your app as follows:
+
+```swift
+// let mobileCardData = MobileCardData(
+//  isPrimaryAccountHolder: profile.isAccountHolder,
+//  notificationMethods: profile.notificationMethods
+// )
+
+let mobileCardData = MobileCardView_Previews.testMobileCardData
+```
+
+If you need to provide a binding as a parameter to a preview, simply wrap a default value in `.constant("value")`
+
+#### A Gnarly Init
+
+[Redacted] likes to do something that most tutorials won't go over — make almost every parameter private. This means that you're going to have to write your own inits, so let's start from the beginning then show you some of the nastier examples that have held me up for a couple of hours.
+
+Let's say you have a component like this:
+
+```swift
+struct LabelAndAttributeView: View {
+  let label: String
+  let attribute: String
+  let spacing: CGFloat = 2
+
+  var body: some View {
+    VStack(alignment: .leading, spacing: spacing) {
+      if label.count > 0 {
+        Text(label)
+          .foregroundColor(Color(UIColor.slateGrey))
+      }
+
+      if attribute.count > 0 {
+        Text(attribute)
+          .foregroundColor(Color(UIColor.nightGrey))
+      }
+    }
+  }
+}
+```
+
+If you were to make those parameters private and leave it at that, the SwiftUI compiler would no longer be able to see what you're doing and automatically write the initializers for you. Therefore, you have to do it yourself:
+
+```swift
+struct LabelAndAttributeView: View {
+  private let label: String
+  private let attribute: String
+  private let spacing: CGFloat
+
+  var body: some View {
+    VStack(alignment: .leading, spacing: spacing) {
+      if label.count > 0 {
+        Text(label)
+          .foregroundColor(Color(UIColor.slateGrey))
+      }
+
+      if attribute.count > 0 {
+        Text(attribute)
+          .foregroundColor(Color(UIColor.nightGrey))
+      }
+    }
+  }
+
+  init(label: String, attribute: String, spacing: CGFloat = 2) {
+    self.label = label
+    self.attribute = attribute
+    self.spacing = spacing
+  }
+}
+```
+
+Note that the "spacing defaults to 2" bit has been moved from the definition of the parameters itself to the init statement.
+
+Now onto the fun part that I won't explain that much because frankly I don't quite understand all of it. How do you set up an init for a private function parameter?
+
+```swift
+struct EditButtonView: View {
+  private let buttonAction: () -> ()
+
+  var body: some View {
+    SwiftUI.Button {
+      buttonAction()
+    } label: {
+      HStack {
+        Text("Edit")
+          .foregroundColor(Color(UIColor.ctaBlue))]
+
+        Spacer()
+
+        Image("edit")
+          .foregroundColor(.white)
+      }
+      .frame(width: 59)
+    }
+    .buttonStyle(.plain)
+  }
+
+  init(buttonAction: @escaping () -> ()) {
+    self.buttonAction = buttonAction
+  }
+}
+```
+
+An _optional_ private function parameter?
+
+```swift
+struct EditButtonView: View {
+
+	private let buttonAction: (() -> ())?
+
+	var body: some View {
+		SwiftUI.Button {
+			if let buttonAction = buttonAction {
+				buttonAction()
+			}
+		} label: {
+			HStack {
+				Text("Edit")
+					.foregroundColor(Color(UIColor.ctaBlue))]
+
+				Spacer()
+
+				Image("edit")
+					.foregroundColor(.white)
+			}
+			.frame(width: 59)
+		}
+		.buttonStyle(.plain)
+	}
+
+	init(buttonAction: (() -> ())?) {
+		self.buttonAction = buttonAction
+	}
+}
+```
+
+A `ViewBuilder`?
+
+```swift
+struct CardView<Content: View, ButtonContent: View>: View {
+	private let cardTitle: String
+	private let content: Content
+	private let buttonContent: ButtonContent
+
+	// MARK: SwiftUI
+	var body: some View {
+		VStack(alignment: .leading, spacing: 0) {
+			HStack(alignment: .center) {
+				Text(cardTitle)
+					.foregroundColor(Color(UIColor.nightGrey))
+
+				Spacer()
+
+				buttonContent
+			}
+			.frame(height: 48)
+			.frame(maxWidth: .infinity)
+			.padding(.horizontal, 16)
+
+			GradientBorderView()
+
+			content
+				.padding(16)
+		}
+		.background(Color(UIColor.white))
+		.cornerRadius(12)
+		.shadow(color: .black.opacity(0.12), radius: 3, x: 3, y: 3)
+	}
+
+	// MARK: Init
+	init(cardTitle: String, @ViewBuilder content: () -> Content, @ViewBuilder buttonContent: () -> ButtonContent) {
+		self.cardTitle = cardTitle
+		self.content = content()
+		self.buttonContent = buttonContent()
+	}
+}
+```
+
+An optional `ViewBuilder`? Append the following extension to the above example:
+
+```swift
+extension CardView where ButtonContent == EmptyView {
+	init(cardTitle: String, @ViewBuilder content: () -> Content, buttonContent: (() -> ButtonContent)? = nil) {
+		self.init(cardTitle: cardTitle, content: content, buttonContent: { EmptyView() })
+	}
+}
+```
+
+If the above fix seems weird, [that's because it is](https://stackoverflow.com/questions/60687912/optional-viewbuilder-closure/63636270#63636270).
+
+## Common XCode pitfalls
+
+When working with SwiftUI previews (a.k.a. Canvas), sometimes you'll see this error:
+
+![Xcode's "Helpful" error](/assets/blog/xcode-being-helpful.png)
+
+That just means XCode is mad. Build, then try to run your previews again. If that doesn't work, try cleaning, restarting XCode, pleading, chanting an incantation — the usual stuff we do to make XCode work for us.
+
+It may also help to let this little circle finish doing what it's doing, every time. YMMV, but I find I tend to trigger the above error more often when I get impatient and clickhappy.
