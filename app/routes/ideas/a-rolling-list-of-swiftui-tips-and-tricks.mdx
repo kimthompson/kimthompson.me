@@ -14,11 +14,13 @@ meta:
 
 ---
 
-# {attributes.title}
+## {attributes.title}
 
-## My Favorite Markup Tips
+##### Updated: {new Date(attributes.date).toLocaleDateString('en-US', {timeZone: 'UTC'})}
 
-#### Creating a parent component that wraps a child
+### My Favorite Markup Tips
+
+### Creating a parent component that wraps a child
 
 As seen in [this StackOverflow](https://stackoverflow.com/questions/66448843/swiftui-custom-view-wrapper) post, do something like this:
 
@@ -52,7 +54,7 @@ struct ContentView: View {
 }
 ```
 
-#### Need something to take up the whole width of its parent?
+### Need something to take up the whole width of its parent?
 
 ```swift
 .frame(maxWidth: .infinity)
@@ -69,11 +71,11 @@ If you need to set a flexible width but a constant height, chain these frame com
 
 Unfortunately, if you tried to use both the `height` and the `maxWidth` in the same `.frame` call, you would get a crash.
 
-#### Shorthand
+### Shorthand
 
 When you find yourself tempted to write something like `padding([.top, .bottom], 16)`, you can instead write `padding(.vertical, 16)`. Same for `.horizontal`.
 
-#### Order of Operations
+### Order of Operations
 
 Styles are applied to frames, whether you explicitly define one or not. So if you want a colored background behind a text object spanning the width of a frame, this won't work:
 
@@ -106,7 +108,7 @@ Text("Primary Phone Number")
   .padding(.top, 16)
 ```
 
-#### Test Data & Previews
+### Test Data & Previews
 
 Previews are one of the nicest things about working with SwiftUI. To render a preview, you need to give it mock parameters. These variables containing mock parameters, in turn, need the `static` attribute so that Previews know they are accessible.
 
@@ -148,7 +150,7 @@ let mobileCardData = MobileCardView_Previews.testMobileCardData
 
 If you need to provide a binding as a parameter to a preview, simply wrap a default value in `.constant("value")`
 
-#### A Gnarly Init
+### A Gnarly Init
 
 [Redacted] likes to do something that most tutorials won't go over — make almost every parameter private. This means that you're going to have to write your own inits, so let's start from the beginning then show you some of the nastier examples that have held me up for a couple of hours.
 
@@ -325,7 +327,7 @@ extension CardView where ButtonContent == EmptyView {
 
 If the above fix seems weird, [that's because it is](https://stackoverflow.com/questions/60687912/optional-viewbuilder-closure/63636270#63636270).
 
-## Common XCode pitfalls
+### Common XCode pitfalls
 
 When working with SwiftUI previews (a.k.a. Canvas), sometimes you'll see this error:
 

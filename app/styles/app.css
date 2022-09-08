@@ -1015,6 +1015,10 @@ video {
   color: #6366f1;
 }
 
+.prose :where(h5):not(:where([class~="not-prose"] *)){
+  color: #ec4899;
+}
+
 .prose-sm :where(.prose > ul > li p):not(:where([class~="not-prose"] *)){
   margin-top: 0.5714286em;
   margin-bottom: 0.5714286em;

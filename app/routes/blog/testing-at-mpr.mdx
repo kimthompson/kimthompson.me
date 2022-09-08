@@ -14,7 +14,9 @@ meta:
 
 ---
 
-# A Distillation of the Scattered Teachings of Kent Dodds
+## A Distillation of the Scattered Teachings of Kent Dodds
+
+##### Updated: {new Date(attributes.date).toLocaleDateString('en-US', {timeZone: 'UTC'})}
 
 I wrote this for my team at MPR in late 2020 to ensure that we were all on the same page regarding testing. Nobody on my team (myself included) really had strong opinions other than:
 
@@ -25,9 +27,9 @@ In light of that, I watched Kent Dodd's two [Frontend Masters](https://frontendm
 
 The goal of this rulebook was to set out in writing what it meant for one of MPR's NPM component libraries to be well tested.
 
-## The Testing Trophy
+### The Testing Trophy
 
-### Terminology & Definitions
+#### Terminology & Definitions
 
 Dodds' "testing trophy" diagram lays out the confidence gained in each stage of testing, with cost and difficulty increasing the higher you go. My thought was that we should keep doing what we're doing for static testing, ensure that our unit tests follow all the rules I'll outline later, and try to expand on integration testing where we can, since that is where the most confidence can be gained for the least work.
 
@@ -35,11 +37,11 @@ Dodds' "testing trophy" diagram lays out the confidence gained in each stage of 
 
 Here is what we're at for each of these stages:
 
-### Static
+#### Static
 
 We use ESLint, Sasslint, PropTypes, and Prettier. Dodds recommends Flow or TypeScript, but Flow is basically dead and TypeScript is more of an intense lift for our apps that we can likely do at the moment.
 
-### Unit
+#### Unit
 
 This is most of the tests we have written so far. Here is an example of how to unit test a bit of UI, from one of Dodd's blog posts:
 
@@ -99,7 +101,7 @@ cases(
 )
 ```
 
-### <a name="integration-example">Integration</a>
+#### <a name="integration-example">Integration</a>
 
 Integration tests will render a good chunk of your app—all of the providers, etc.—mocking as little as possible to see if it all works together. If your app is small enough, this test may even render the whole thing, but that will not be the case for most of our stuff. The line between this and E2E testing is a bit blurry.
 
@@ -166,11 +168,11 @@ test('login as an existing user', async () => {
 })
 ```
 
-### E2E
+#### E2E
 
 This is where you use a tool like Cypress or Playwright to click through your site just like a user would. It doesn’t even apply to our libraries and would be overkill for most of our sites. We should perhaps try it with a big site like MPR News if we ever get the time (which we won’t).
 
-## <a name="mocking">Mocking</a>
+### <a name="mocking">Mocking</a>
 
 Mocks are, at their core, functions that keep track of how they’re called and what called them. Dodds prefers to avoid mocking wherever possible, but sometimes it is not just feasible or desirable to import and run an actual function as many times as you need to test the features that use it. Mock where it makes sense -- where things are slow, where you have to wait for data from an API, where you have to wait for animations, where JSDOM can’t figure out what an SVG is, and so on.
 
@@ -247,7 +249,7 @@ test('returns winner', () => {
 })
 ```
 
-## File Structure
+### File Structure
 
 Our apps currently have kind of a mix of organization schemes. Some have a `__tests__` folder at the root level, while others have a `__tests__` folder in each component folder, while some skip that entirely and pair the `*.test.js` file right next to what it is testing. I favored the latter for its terseness, but if we organize the way Dodds recommends, more options are open to us.
 
@@ -270,7 +272,7 @@ Component/
     └── Subcomponent.test.js
 ```
 
-## Code Coverage
+### Code Coverage
 
 Sometimes, managers make the mistake of instituting a 100% code coverage rule. This is a misguided impulse and that will lead to superficial tests.
 
@@ -282,7 +284,7 @@ In that light, I would propose that our average websites aim for 80% code covera
 
 More important than whatever I think might be a good number, after our initial refactor of our tests we should set up coverage thresholds in our projects so that our coverage cannot sink any lower when we add new features (see the section on <a name="#configuration">configuration</a> for how to do this).
 
-## Snapshots
+### Snapshots
 
 Snapshots don’t often end up being all that useful. More often than not, any change will break the snapshot, and you’ll just hit the `u` button to update, assuming that it’s nothing, almost always correctly.
 
@@ -290,11 +292,11 @@ Some authorities on testing say it should never be used, but Dodds is a bit soft
 
 We’ll be purging most of our snapshots and likely not use them much in the future.
 
-## Simulating Events
+### Simulating Events
 
 When you create a container for testing, it’s isolated. You’re not actually attaching it to the DOM, so you need to use Jest functions like `fireEvent()` to interact with your page. You ought to use `renderIntoDocument()` instead of the normal `render()` function as well. See the <a name="#integration-example">Integration Test example</a> for an idea of what this looks like.
 
-## <a name="configuration">Configuration</a>
+### <a name="configuration">Configuration</a>
 
 Here's an example of one of our `jest.config.js` files:
 
@@ -328,13 +330,13 @@ import 'babel-polyfill'
 
 You can add more here as necessary and as you discover new tools that help your tests run better. These are just the tools I use and the things I installed to make the confusing runtime errors go away.
 
-## Best Practices
+### Best Practices
 
-### Arrange, Act, Assert
+#### Arrange, Act, Assert
 
 The generic pattern most people follow for setting up tests: render or run the function you want, do something with it (if applicable) and then see if everything turned out like you expected.
 
-### Object & Test Factories
+#### Object & Test Factories
 
 An object factory is basically a function that will create the object you wish to test and provide you an opportunity to overwrite it. Here’s an example:
 
@@ -434,7 +436,7 @@ Then again, if you never abstract anything some of your tests with a lot of setu
 
 Why would you not just use `beforeEach()`? That brings us to our second practice:
 
-### Avoid Nesting
+#### Avoid Nesting
 
 The following code works fine and isn’t bad. But according to Dodds, it is harder to read than it ought to be.
 
@@ -535,7 +537,7 @@ What is `handleSubmit`? What is its value? Where is `user` coming from? What doe
 
 As a side node, we prefer to use the `test` function instead of the `it` function most of the time, but on the rare occasion we group tests together with `describe`, we will then use `it`. They are functionally interchangeable.
 
-### jest-in-case is good
+#### jest-in-case is good
 
 ```javascript
 import cases from 'jest-in-case'
@@ -553,17 +555,17 @@ cases(
 )
 ```
 
-## Documentation
+### Documentation
 
 Each component will have a corresponding page in GitHub’s Wiki. You can edit markdown files these using GitHub’s interface or by cloning down the wiki repo with `git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.wiki.git` (this is created automatically when you first create a wiki page).
 
 Please try to keep them up to date. At a minimum, the main page should involve installation and basic usage instructions, while each component page should outline props and functionality.
 
-## Conclusion
+### Conclusion
 
 Check out [@apmg/mimas v1.0.0](https://github.com/APMG/apm-mimas/wiki) or later for an idea of what this looks like in practice, keeping in mind that Mimas is tiny and there’s not much integration testing to be done.
 
-## Blog Selections
+### Blog Selections
 
 - https://kentcdodds.com/blog/aha-testing
 - https://kentcdodds.com/blog/testing-implementation-details

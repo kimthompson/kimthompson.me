@@ -18,7 +18,7 @@ export default function Index() {
       <Posts posts={data.posts} />
 
       <h2 className="font-heading text-3xl italic text-gray-900 dark:text-slate-100 px-2 pb-6">
-        Drafts{' '}
+        Digital Garden
         <span className="text-base not-italic text-indigo-500">
           Because privacy is for cowards{' '}
           <a

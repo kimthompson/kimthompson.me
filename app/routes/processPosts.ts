@@ -1,5 +1,6 @@
 import * as ONE from './blog/testing-at-mpr.mdx'
 import * as TWO from './blog/on-basecamp.mdx'
+import * as THREE from './blog/digital-garden-and-update.mdx'
 
 import * as one from './ideas/thoughts-on-stray.mdx'
 import * as two from './ideas/an-ode-to-victor-mono.mdx'
@@ -20,7 +21,7 @@ function sortPostsByDate(a: any, b: any) {
 }
 
 export const data = {
-  posts: [postFromModule(ONE), postFromModule(TWO)].sort(sortPostsByDate),
+  posts: [postFromModule(ONE), postFromModule(TWO), postFromModule(THREE)].sort(sortPostsByDate),
   drafts: [
     postFromModule(one),
     postFromModule(two),

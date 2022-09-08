@@ -17,7 +17,7 @@ export default function Posts({ posts, isDraft = false }: Props) {
           >
             {post.title}{' '}
             <span className="text-xs text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-teal-500">
-              &nbsp;{new Date(post.date).toLocaleDateString()}
+              &nbsp;{new Date(post.date).toLocaleDateString('en-US', {timeZone: 'UTC'})}
             </span>
           </Link>
         </li>
