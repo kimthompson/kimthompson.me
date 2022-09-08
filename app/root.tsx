@@ -8,6 +8,10 @@ import {
   ScrollRestoration,
 } from '@remix-run/react'
 import { LinksFunction } from '@remix-run/node'
+
+import Header from './components/Header'
+import Footer from './components/Footer'
+
 import styles from './styles/app.css'
 
 export const links: LinksFunction = () => {
@@ -27,8 +31,10 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="w-screen">
+        <Header />
         <Outlet />
+        <Footer />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
