@@ -1,4 +1,4 @@
-import { data } from '~/utils/processPosts'
+import { data } from '~/routes/processPosts'
 
 import { LoaderFunction } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
