@@ -5,19 +5,6 @@ import { useLoaderData } from '@remix-run/react'
 
 import Posts from '../components/Posts'
 
-function postFromModule(mod: any) {
-  return {
-    slug: mod.filename.replace(/\.mdx??$/, ''),
-    ...mod.attributes.meta,
-  }
-}
-
-function sortPostsByDate(a: any, b: any) {
-  let first: any = new Date(a.date)
-  let second: any = new Date(b.date)
-  return second - first
-}
-
 export const loader: LoaderFunction = () => data
 
 export default function Index() {
