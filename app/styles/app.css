@@ -1011,6 +1011,10 @@ video {
   margin-bottom: 0;
 }
 
+.prose :where(h6):not(:where([class~="not-prose"] *)){
+  color: #6366f1;
+}
+
 .prose-sm :where(.prose > ul > li p):not(:where([class~="not-prose"] *)){
   margin-top: 0.5714286em;
   margin-bottom: 0.5714286em;
@@ -1342,11 +1346,6 @@ video {
   padding-right: 0.5rem;
 }
 
-.py-10{
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
-}
-
 .pb-12{
   padding-bottom: 3rem;
 }
@@ -1374,9 +1373,9 @@ video {
   line-height: 2.25rem;
 }
 
-.text-lg{
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+.text-base{
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .font-extrabold{
@@ -1491,6 +1490,10 @@ video {
 ::selection {
   background-color: #26a69a;
   color: #fefefe;
+}
+
+pre, code {
+  font-family: 'Victor Mono', monospace;
 }
 
 html.dark {
@@ -1631,41 +1634,6 @@ html.dark {
 
 .prose-headings\:italic :is(:where(h1, h2, h3, h4, h5, h6, th):not(:where([class~="not-prose"] *))){
   font-style: italic;
-}
-
-.prose-h6\:text-indigo-500 :is(:where(h6):not(:where([class~="not-prose"] *))){
-  --tw-text-opacity: 1;
-  color: rgb(99 102 241 / var(--tw-text-opacity));
-}
-
-.prose-h6\:text-pink-500 :is(:where(h6):not(:where([class~="not-prose"] *))){
-  --tw-text-opacity: 1;
-  color: rgb(236 72 153 / var(--tw-text-opacity));
-}
-
-.prose-h6\:text-purple-500 :is(:where(h6):not(:where([class~="not-prose"] *))){
-  --tw-text-opacity: 1;
-  color: rgb(168 85 247 / var(--tw-text-opacity));
-}
-
-.prose-h6\:text-teal-500 :is(:where(h6):not(:where([class~="not-prose"] *))){
-  --tw-text-opacity: 1;
-  color: rgb(20 184 166 / var(--tw-text-opacity));
-}
-
-.prose-h6\:text-purple-400 :is(:where(h6):not(:where([class~="not-prose"] *))){
-  --tw-text-opacity: 1;
-  color: rgb(192 132 252 / var(--tw-text-opacity));
-}
-
-.prose-h6\:text-purple-300 :is(:where(h6):not(:where([class~="not-prose"] *))){
-  --tw-text-opacity: 1;
-  color: rgb(216 180 254 / var(--tw-text-opacity));
-}
-
-.prose-h6\:text-pink-400 :is(:where(h6):not(:where([class~="not-prose"] *))){
-  --tw-text-opacity: 1;
-  color: rgb(244 114 182 / var(--tw-text-opacity));
 }
 
 .prose-img\:rounded-md :is(:where(img):not(:where([class~="not-prose"] *))){

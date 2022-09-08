@@ -46,6 +46,10 @@
   color: #fefefe;
 }
 
+pre, code {
+  font-family: 'Victor Mono', monospace;
+}
+
 html.dark {
   --text-color: white;
   --background-color: black;
