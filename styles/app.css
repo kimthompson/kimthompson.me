@@ -45,3 +45,8 @@
   background-color: #26a69a;
   color: #fefefe;
 }
+
+html.dark {
+  --text-color: white;
+  --background-color: black;
+}
