@@ -19,7 +19,7 @@ export default function Index() {
 
       <h2 className="font-heading text-3xl italic text-gray-900 dark:text-slate-100 px-2 pb-6">
         Digital Garden
-        <span className="text-base not-italic text-indigo-500">
+        <span className="text-base not-italic text-indigo-500 pl-3">
           Because privacy is for cowards{' '}
           <a
             className="hover:text-gray-900 dark:hover:text-slate-100"

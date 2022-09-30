@@ -1011,12 +1011,12 @@ video {
   margin-bottom: 0;
 }
 
-.prose :where(h6):not(:where([class~="not-prose"] *)){
-  color: #6366f1;
-}
-
 .prose :where(h5):not(:where([class~="not-prose"] *)){
   color: #ec4899;
+}
+
+.prose :where(h6):not(:where([class~="not-prose"] *)){
+  color: #6366f1;
 }
 
 .prose-sm :where(.prose > ul > li p):not(:where([class~="not-prose"] *)){
@@ -1360,6 +1360,14 @@ video {
 
 .pb-6{
   padding-bottom: 1.5rem;
+}
+
+.pl-6{
+  padding-left: 1.5rem;
+}
+
+.pl-3{
+  padding-left: 0.75rem;
 }
 
 .font-heading{

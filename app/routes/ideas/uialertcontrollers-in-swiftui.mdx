@@ -1,0 +1,155 @@
+---
+title: An extension allowing UIAlertControllers to be displayed in SwiftUI views
+date: 2022-09-30
+blurb: I wrote an extension for displaying a UIAlertController in a SwiftUI view because alerts with text fields aren't yet supported for iOS 14.
+meta:
+  title: An extension allowing UIAlertControllers to be displayed in SwiftUI views
+  date: 2022-09-30
+  blurb: I wrote an extension for displaying a UIAlertController in a SwiftUI view because alerts with text fields aren't yet supported for iOS 14.
+---
+
+---
+
+###### {attributes.blurb}
+
+---
+
+I built this for work and figured others might find it useful. I may ultimately try to publish this via Swift Package Manager, but for now I simply wanted to make sure I didn't lose the code or my idle thoughts around it. You can find a demo [here](https://github.com/kimthompson/AlertWrapperDemo).
+
+This wrapper is based on the example in [this blog post by Chris Eidhof](https://www.objc.io/blog/2020/04/21/swiftui-alert-with-textfield/). It's about the fourth approach I found and tried, and I thought it could use a little more promotion. I also modified it to work for my current project and I believe made it more flexible overall, so I thought it deserved its own post.
+
+There are two parts to this. The first part is comprised of a wrapper that essentially takes any `UIAlertController` and packages it for use on SwiftUI views and an `.alert` extension on the `View` itself that allows it to be displayed.
+
+```swift
+import SwiftUI
+import UIKit
+
+struct AlertWrapper<Content: View>: UIViewControllerRepresentable {
+    @Binding var isPresented: Bool
+    let alert: UIAlertController
+    let content: Content
+
+    func makeUIViewController(context: UIViewControllerRepresentableContext<AlertWrapper>) -> UIHostingController<Content> {
+        UIHostingController(rootView: content)
+    }
+
+    final class Coordinator {
+        var alertController: UIAlertController?
+        init(_ controller: UIAlertController? = nil) {
+            self.alertController = controller
+        }
+    }
+
+    func makeCoordinator() -> Coordinator {
+        return Coordinator()
+    }
+
+    func updateUIViewController(_ uiViewController: UIHostingController<Content>, context: UIViewControllerRepresentableContext<AlertWrapper>) {
+        uiViewController.rootView = content
+
+        if isPresented && uiViewController.presentedViewController == nil {
+            context.coordinator.alertController = alert
+            uiViewController.present(context.coordinator.alertController!, animated: true)
+        }
+
+        if !isPresented && uiViewController.presentedViewController == context.coordinator.alertController {
+            uiViewController.dismiss(animated: true)
+        }
+    }
+}
+
+extension View {
+    public func alert(isPresented: Binding<Bool>, alert: UIAlertController) -> some View {
+        AlertWrapper(isPresented: isPresented, alert: alert, content: self)
+    }
+}
+```
+
+From there, you can create an `UIAlertController` object and simply attach it to your SwiftUI view using the above `.alert` extension. The page I needed to construct needed to be able to show three different alerts, so I stored the alert object in local state and swapped it out as needed.
+
+```swift
+import SwiftUI
+
+struct DemoView: View {
+    @State var isShowingAlert = false
+    @State var alert = UIAlertController(title: "Default", message: "Placeholder", preferredStyle: .alert)
+
+    var body: some View {
+        VStack(spacing: 0) {
+            ScrollView {
+                VStack(spacing: 16) {
+                    SwiftUI.Button {
+                        DispatchQueue.main.async {
+                            alert = buildPasswordAlert()
+                            isShowingAlert = true
+                        }
+                    } label: {
+                        Text("Password Alert")
+                    }
+
+                    SwiftUI.Button {
+                        DispatchQueue.main.async {
+                            alert = buildOtherAlert()
+                            isShowingAlert = true
+                        }
+                    } label: {
+                        Text("Other Alert")
+                    }
+                }
+                .padding()
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .alert(isPresented: $isShowingAlert, alert: alert)
+    }
+
+    private func buildPasswordAlert() -> UIAlertController {
+        let alert = UIAlertController(title: "Password", message: "Please enter your password.", preferredStyle: .alert)
+
+        alert.addTextField { field in
+            field.placeholder = "Password"
+            field.returnKeyType = .next
+            field.isSecureTextEntry = true
+        }
+
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+            print("Cancelled")
+            isShowingAlert = false
+        })
+        let enterAction: UIAlertAction = UIAlertAction(title: "Enter", style: .default, handler: { _ in
+            guard let fields = alert.textFields, fields.count == 1 else { return }
+            let passwordField = fields[0]
+            if let passwordFieldText = passwordField.text {
+                // In reality you would check this password against a backend or something and either act or refuse to act, but I'm just going to print out the password entered
+                print("Entered \(passwordFieldText)")
+            }
+            isShowingAlert = false
+        })
+
+        alert.addAction(cancelAction)
+        alert.addAction(enterAction)
+
+        return alert
+    }
+
+    private func buildOtherAlert() -> UIAlertController {
+        let alert = UIAlertController(title: "Are You Sure?", message: nil, preferredStyle: .alert)
+
+        let yesAction: UIAlertAction = UIAlertAction(title: "Yes", style: .default, handler: { _ in
+            print("Yes")
+            isShowingAlert = false
+        })
+        let noAction: UIAlertAction = UIAlertAction(title: "No", style: .default, handler: { _ in
+            print("No")
+            isShowingAlert = false
+        })
+
+        alert.addAction(yesAction)
+        alert.addAction(noAction)
+
+        return alert
+    }
+}
+```
+
+Note that because they are building UI these "buildAlert" functions should be run on the main thread by wrapping them in `DispatchQueue.main.async`.
