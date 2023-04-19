@@ -1,0 +1,35 @@
+---
+title: Just enough UIKit to be dangerous
+date: 2023-04-19
+blurb: They said I should focus on SwiftUI and that UIKit was dying. They were wrong.
+meta:
+  title: Just enough UIKit to be dangerous
+  date: 2023-04-19
+  blurb: They said I should focus on SwiftUI and that UIKit was dying. They were wrong.
+---
+
+---
+
+###### {attributes.blurb}
+
+---
+
+## {attributes.title}
+
+This post was inspired by a few questions I've been fielding from other developers in my agency trying to pivot into iOS development. They have been learning SwiftUI and loving it, yet when their clients presented them with a task on their iOS application, they were faced with a Storyboard.
+
+My first time messing with a Storyboard, I thought the principle was kind of cool. I was primarily a frontend dev fresh out of college and had dabbled in UX and design, so drag-and-drop interfaces were familiar to me.
+
+I soon learned to despise it. 
+
+### TODO: Walkthrough of basic controls
+
+1. Command + Shift + L to pull up the "Library", then drag into the sidebar
+2. Hold control and click and drag to whatever constraint relationship you wish to describe
+
+### TODO: Tips
+
+1. Use Stackviews wherever possible so you don't have to worry about nightmare constraint cleanups when you simply want to, say, show or hide a component under certain conditions.
+2. Honestly, I'd create minimal storyboards and throw as much as possible into a `setUpUI()` function that you can call on `viewDidLoad()`. TODO: show how
+3. It will sometimes offer to help you and automatically fix constraints. It's lying. Ignore it.
+4. It will sometimes say there's an error in your constraints and automatically offer to fix it. Just run the code as is with your "error" included first, since it's probably wrong and applying its "fix" might break everything.

@@ -137,14 +137,9 @@ struct MobileCardView_Previews: PreviewProvider {
 }
 ```
 
-Should you wish to see this mocked data in the actual app because, say, mw isn't done yet, you can remove the `private` attribute and refer to it in your app as follows:
+Should you wish to see this mocked data in the actual app because, say, the backend data isn't done yet, you can remove the `private` attribute and refer to it in your app as follows:
 
 ```swift
-// let mobileCardData = MobileCardData(
-//  isPrimaryAccountHolder: profile.isAccountHolder,
-//  notificationMethods: profile.notificationMethods
-// )
-
 let mobileCardData = MobileCardView_Previews.testMobileCardData
 ```
 
@@ -333,6 +328,4 @@ When working with SwiftUI previews (a.k.a. Canvas), sometimes you'll see this er
 
 ![Xcode's "Helpful" error](/assets/blog/xcode-being-helpful.png)
 
-That just means XCode is mad. Build, then try to run your previews again. If that doesn't work, try cleaning, restarting XCode, pleading, chanting an incantation — the usual stuff we do to make XCode work for us.
-
-It may also help to let this little circle finish doing what it's doing, every time. YMMV, but I find I tend to trigger the above error more often when I get impatient and clickhappy.
+That just means XCode is mad. Build, then try to run your previews again. If that doesn't work, try cleaning, restarting XCode, pleading, chanting an incantation — the usual stuff. It should work again at some point (probably).

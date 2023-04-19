@@ -1362,10 +1362,6 @@ video {
   padding-bottom: 1.5rem;
 }
 
-.pl-6{
-  padding-left: 1.5rem;
-}
-
 .pl-3{
   padding-left: 0.75rem;
 }
@@ -1631,6 +1627,30 @@ html.dark {
   background-color: rgb(17 24 39 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-gradient-to-r:hover{
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+
+.hover\:from-pink-500:hover{
+  --tw-gradient-from: #ec4899;
+  --tw-gradient-to: rgb(236 72 153 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.hover\:via-purple-500:hover{
+  --tw-gradient-to: rgb(168 85 247 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), #a855f7, var(--tw-gradient-to);
+}
+
+.hover\:to-teal-500:hover{
+  --tw-gradient-to: #14b8a6;
+}
+
+.hover\:bg-clip-text:hover{
+  -webkit-background-clip: text;
+          background-clip: text;
+}
+
 .hover\:text-gray-900:hover{
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
@@ -1639,6 +1659,10 @@ html.dark {
 .hover\:text-slate-100:hover{
   --tw-text-opacity: 1;
   color: rgb(241 245 249 / var(--tw-text-opacity));
+}
+
+.hover\:text-transparent:hover{
+  color: transparent;
 }
 
 .prose-headings\:font-heading :is(:where(h1, h2, h3, h4, h5, h6, th):not(:where([class~="not-prose"] *))){
