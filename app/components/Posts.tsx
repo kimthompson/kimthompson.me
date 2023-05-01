@@ -12,7 +12,7 @@ export default function Posts({ posts, isDraft = false }: Props) {
       {posts.map((post: any) => (
         <li key={post.slug}>
           <Link
-            className="transition ease-in-out items-bottom hover:text-slate-100 hover:bg-gray-900 dark:hover:bg-slate-100 dark:hover:text-gray-900 duration-300 px-2 my-2"
+            className="transition ease-in-out duration-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-pink-500 hover:via-purple-500 hover:to-teal-500 px-2 my-2"
             to={`/${prefix}/${post.slug}`}
           >
             {post.title}{' '}

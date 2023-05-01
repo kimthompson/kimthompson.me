@@ -63,9 +63,9 @@ export default function Header() {
 
       <button className="absolute top-8 right-5" onClick={toggleTheme}>
         {theme === Theme.DARK ? (
-          <FiSun className="h-9 w-9 p-2 mx-3 rounded-md text-slate-100 dark:text-gray-900 transition ease-in-out bg-gray-900 dark:bg-slate-100 hover:-translate-y-1 hover:scale-110 duration-300" />
+          <FiSun className="h-9 w-9 p-2 mx-3 rounded-md text-slate-100 dark:text-gray-900 transition ease-in-out duration-300 bg-gray-900 dark:bg-slate-100 hover:-translate-y-1 hover:scale-110" />
         ) : (
-          <FiMoon className="h-9 w-9 p-2 mx-3 rounded-md text-slate-100 dark:text-gray-900 transition ease-in-out bg-gray-900 dark:bg-slate-100 hover:-translate-y-1 hover:scale-110 duration-300" />
+          <FiMoon className="h-9 w-9 p-2 mx-3 rounded-md text-slate-100 dark:text-gray-900 transition ease-in-out duration-300 bg-gray-900 dark:bg-slate-100 hover:-translate-y-1 hover:scale-110 " />
         )}
       </button>
     </header>
