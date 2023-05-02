@@ -14,12 +14,13 @@ export default function Header() {
 
   const pickRandomPhrase = () => {
     let lol = [
-      'Anti-crypto enthusiast.',
-      'Cripplingly addicted to FFXIV.',
-      'No double quotes, no semicolons.',
-      'Cat mom.',
-      'Aider and abettor.',
-      'Dependent on caffeine.',
+      'Anti-crypto enthusiast',
+      'Cripplingly addicted to FFXIV',
+      'No double quotes, no semicolons',
+      'Putting my cats through college',
+      'Aiding and abetting',
+      'Runs on caffeine',
+      'Re: Elon &mdash; I told you so',
     ]
 
     setRandomPhrase(lol[Math.floor(Math.random() * lol.length)])
