@@ -37,6 +37,6 @@ export default function Footer() {
         </a>
       </div>
     </footer>
-    
+
   )
 }

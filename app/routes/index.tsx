@@ -4,34 +4,136 @@ import { LoaderFunction } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 
 import Posts from '../components/Posts'
-import Projects, { Platform } from '../components/Projects'
+import Projects, { Technology } from '../components/Projects'
 
 export const loader: LoaderFunction = () => data
 
 export default function Index() {
   const data = useLoaderData()
-  const indieProjects = [
+
+  const indieProjects: { name: string, link: string, technologies: Technology[] }[] = [
     {
-      name: 'Spice Tower Entertainment website',
+      name: 'Spice Tower Entertainment',
       link: 'https://spicetower.games',
-      platforms: [
-        Platform.remix,
-        Platform.react,
-        Platform.ios,
-        Platform.windows,
-        Platform.android,
-        Platform.java,
-        Platform.redux,
-        Platform.web,
-        Platform.tailwind,
-        Platform.sass,
-        Platform.node,
-        Platform.nextjs,
-        Platform.rails,
-        Platform.css,
-        Platform.html,
-        Platform.webpack,
-      ]
+      technologies: [
+        Technology.web,
+        Technology.remix,
+        Technology.react,
+        Technology.tailwind,
+      ],
+    },
+  ]
+
+  const corpoProjects: { name: string, link?: string, technologies: Technology[] }[] = [
+    {
+      name: 'Cox App',
+      link: 'https://apps.apple.com/us/app/cox-app/id415894489',
+      technologies: [
+        Technology.ios,
+        Technology.swift,
+        Technology.aws,
+      ],
+    },
+    {
+      name: 'Internal Application for Best Buy',
+      technologies: [
+        Technology.web,
+        Technology.react,
+        Technology.redux,
+        Technology.java,
+        Technology.css,
+        Technology.aws,
+      ],
+    },
+    {
+      name: 'Internal Application for Express Scripts',
+      technologies: [
+        Technology.web,
+        Technology.react,
+        Technology.redux,
+        Technology.java,
+        Technology.css,
+        Technology.webpack,
+      ],
+    },
+    {
+      name: 'Your Classical',
+      link: 'https://apps.apple.com/us/app/yourclassical/id1564157090',
+      technologies: [
+        Technology.ios,
+        Technology.android,
+        Technology.web,
+        Technology.react,
+        Technology.css,
+        Technology.webpack,
+      ],
+    },
+    {
+      name: 'APM Podcast Site Generator',
+      link: 'https://www.slowdownshow.org/',
+      technologies: [
+        Technology.web,
+        Technology.react,
+        Technology.nextjs,
+        Technology.node,
+        Technology.sass,
+        Technology.webpack,
+      ],
+    },
+    {
+      name: 'MPR News complete site rebuild',
+      link: 'https://www.mprnews.org/',
+      technologies: [
+        Technology.web,
+        Technology.react,
+        Technology.nextjs,
+        Technology.node,
+        Technology.sass,
+        Technology.webpack,
+      ],
+    },
+    {
+      name: 'MPR News 2020 Election Visualizations',
+      link: 'https://www.mprnews.org/2020-11-03/',
+      technologies: [
+        Technology.web,
+        Technology.d3,
+        Technology.react,
+        Technology.sass,
+      ],
+    },
+    {
+      name: 'React Component Libraries for MPR',
+      link: 'https://www.npmjs.com/search?q=%40apmg',
+      technologies: [
+        Technology.npm,
+        Technology.react,
+        Technology.sass,
+        Technology.webpack,
+      ],
+    },
+    {
+      name: 'Internal Application for Renewal by Anderson',
+      technologies: [
+        Technology.ios,
+        Technology.objc,
+      ],
+    },
+    {
+      name: 'Internal Application for Cargill',
+      technologies: [
+        Technology.ios,
+        Technology.windows,
+        Technology.objc,
+        Technology.csharp,
+      ],
+    },
+    {
+      name: 'Internal Application for Aramark',
+      technologies: [
+        Technology.windows,
+        Technology.csharp,
+      ],
     },
   ]
 
@@ -59,76 +161,12 @@ export default function Index() {
       <h2 className="font-heading text-3xl italic text-gray-900 dark:text-slate-100 px-2 pb-6">
         Recent Indie Projects
       </h2>
-      <Projects
-        projects={indieProjects}
-      />
+      <Projects projects={indieProjects} />
 
       <h2 className="font-heading text-3xl italic text-gray-900 dark:text-slate-100 px-2 pb-6">
         Selected Past Corporate Contributions
       </h2>
-      <ul className="text-gray-900 dark:text-slate-100 pb-12">
-        <li>
-          <a
-            href="https://apps.apple.com/us/app/cox-app/id415894489"
-            className="transition ease-in-out duration hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-pink-500 hover:via-purple-500 hover:to-teal-500 px-2 my-2"
-          >
-            Cox App for iOS
-          </a>
-        </li>
-        <li>
-          <span
-            className="transition ease-in-out duration hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-pink-500 hover:via-purple-500 hover:to-teal-500 px-2 my-2"
-          >
-            An internal React, Redux, and Java Spring application for Best Buy
-          </span>
-        </li>
-        <li>
-          <span
-            className="transition ease-in-out duration hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-pink-500 hover:via-purple-500 hover:to-teal-500 px-2 my-2"
-          >
-            An internal React, Redux, and Java Spring application for Express Scripts
-          </span>
-        </li>
-        <li>
-          <a
-            href="https://www.yourclassical.org/story/2021/10/20/listen-to-the-yourclassical-app-on-your-mobile-device"
-            className="transition ease-in-out duration hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-pink-500 hover:via-purple-500 hover:to-teal-500 px-2 my-2"
-          >
-            Your Classical in React Native for MPR
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.slowdownshow.org/"
-            className="transition ease-in-out duration hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-pink-500 hover:via-purple-500 hover:to-teal-500 px-2 my-2"
-          >
-            APM Podcast subsite engine in Next.js for MPR
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.mprnews.org"
-            className="transition ease-in-out duration hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-pink-500 hover:via-purple-500 hover:to-teal-500 px-2 my-2"
-          >
-            MPR News complete site rebuild in Next.js for MPR
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.npmjs.com/search?q=%40apmg"
-            className="transition ease-in-out duration hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-pink-500 hover:via-purple-500 hover:to-teal-500 px-2 my-2"
-          >
-            Assorted React component libraries for MPR
-          </a>
-        </li>
-        <li>
-          <span
-            className="transition ease-in-out duration hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-pink-500 hover:via-purple-500 hover:to-teal-500 px-2 my-2"
-          >
-            An internal iOS application for Renewal By Anderson
-          </span>
-        </li>
-      </ul>
+      <Projects projects={corpoProjects} />
     </main>
   )
 }
