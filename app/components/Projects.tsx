@@ -1,36 +1,7 @@
+import { Project, Technology } from '../utils/projectData'
+
 type Props = {
   projects: Project[]
-}
-
-type Project = {
-  name: string
-  link?: string
-  technologies: Technology[]
-}
-
-export enum Technology {
-  remix = 'remix',
-  react = 'react',
-  ios = 'ios',
-  windows = 'windows',
-  android = 'android',
-  java = 'java',
-  redux = 'redux',
-  web = 'web',
-  tailwind = 'tailwind',
-  sass = 'sass',
-  node = 'node',
-  nextjs = 'nextjs',
-  rails = 'rails',
-  css = 'css',
-  html = 'html',
-  webpack = 'webpack',
-  swift = 'swift',
-  aws = 'aws',
-  d3 = 'd3',
-  npm = 'npm',
-  objc = 'objc',
-  csharp = 'csharp',
 }
 
 const PlatformIcon = (props: {
