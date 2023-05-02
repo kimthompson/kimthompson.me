@@ -8,7 +8,8 @@ module.exports = {
       fontFamily: {
         ...fontFamily,
         'sans': ['Poppins', 'sans-serif'],
-        'heading': ['Victor Mono', 'monospace']
+        'heading': ['Victor Mono', 'monospace'],
+        'mono': ['Fantasque Sans Mono', 'monospace']
       },
       keyframes: {
         wiggle: {

@@ -1,4 +1,4 @@
-import styles from 'highlight.js/styles/base16/papercolor-dark.css'
+import styles from '@catppuccin/highlightjs/css/catppuccin-mocha.css'
 import { LinksFunction } from '@remix-run/node'
 import { Outlet } from '@remix-run/react'
 

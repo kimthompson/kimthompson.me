@@ -40,7 +40,9 @@ export default function Header() {
 
       <div className="flex-auto max-w-sm md:max-w-md lg:max-w-2xl">
         <h1 className="font-heading font-extrabold tracking-tight text-6xl md:text-7xl lg:text-8xl italic text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-teal-500 mb-3">
-          Kim Thompson
+          <a href="/">
+            Kim Thompson
+          </a>
         </h1>
         <p className="text-gray-900 dark:text-slate-100">
           Web (
@@ -63,9 +65,9 @@ export default function Header() {
 
       <button className="absolute top-8 right-5" onClick={toggleTheme}>
         {theme === Theme.DARK ? (
-          <FiSun className="h-9 w-9 p-2 mx-3 rounded-md text-slate-100 dark:text-gray-900 transition ease-in-out bg-gray-900 dark:bg-slate-100 hover:-translate-y-1 hover:scale-110 duration-300" />
+          <FiSun className="h-9 w-9 p-2 mx-3 rounded-md text-slate-100 dark:text-gray-900 transition ease-in-out duration-300 bg-gray-900 dark:bg-slate-100 hover:-translate-y-1 hover:scale-110" />
         ) : (
-          <FiMoon className="h-9 w-9 p-2 mx-3 rounded-md text-slate-100 dark:text-gray-900 transition ease-in-out bg-gray-900 dark:bg-slate-100 hover:-translate-y-1 hover:scale-110 duration-300" />
+          <FiMoon className="h-9 w-9 p-2 mx-3 rounded-md text-slate-100 dark:text-gray-900 transition ease-in-out duration-300 bg-gray-900 dark:bg-slate-100 hover:-translate-y-1 hover:scale-110 " />
         )}
       </button>
     </header>

@@ -125,7 +125,7 @@ code,
 kbd,
 samp,
 pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: Fantasque Sans Mono, monospace;
   /* 1 */
   font-size: 1em;
   /* 2 */
@@ -1234,6 +1234,14 @@ video {
   margin-bottom: 0.75rem;
 }
 
+.ml-2{
+  margin-left: 0.5rem;
+}
+
+.mt-1{
+  margin-top: 0.25rem;
+}
+
 .flex{
   display: flex;
 }
@@ -1250,6 +1258,10 @@ video {
   height: 2.25rem;
 }
 
+.h-\[1\.2rem\]{
+  height: 1.2rem;
+}
+
 .w-screen{
   width: 100vw;
 }
@@ -1264,6 +1276,10 @@ video {
 
 .w-9{
   width: 2.25rem;
+}
+
+.w-\[1\.2rem\]{
+  width: 1.2rem;
 }
 
 .max-w-sm{
@@ -1360,10 +1376,6 @@ video {
 
 .pb-6{
   padding-bottom: 1.5rem;
-}
-
-.pl-6{
-  padding-left: 1.5rem;
 }
 
 .pl-3{
@@ -1498,6 +1510,19 @@ video {
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Fantasque Sans Mono';
+
+  src: url('/fonts/FantasqueSansMono/Fantasque Sans Mono Regular Nerd Font Complete Mono.ttf')
+    format('ttf');
+
+  font-weight: 400;
+
+  font-style: normal;
+
+  font-display: swap;
+}
+
 ::-moz-selection {
   background-color: #26a69a;
   color: #fefefe;
@@ -1510,7 +1535,11 @@ video {
 
 pre,
 code {
-  font-family: 'Victor Mono', monospace;
+  font-family: 'Fantasque Sans Mono', Lucida, Monaco, Courier, monospace;
+}
+
+.hljs {
+  background: transparent !important;
 }
 
 html.dark {
@@ -1626,9 +1655,28 @@ html.dark {
           animation: wiggle 0.5s linear infinite;
 }
 
-.hover\:bg-gray-900:hover{
-  --tw-bg-opacity: 1;
-  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+.hover\:bg-gradient-to-r:hover{
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+
+.hover\:from-pink-500:hover{
+  --tw-gradient-from: #ec4899;
+  --tw-gradient-to: rgb(236 72 153 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.hover\:via-purple-500:hover{
+  --tw-gradient-to: rgb(168 85 247 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), #a855f7, var(--tw-gradient-to);
+}
+
+.hover\:to-teal-500:hover{
+  --tw-gradient-to: #14b8a6;
+}
+
+.hover\:bg-clip-text:hover{
+  -webkit-background-clip: text;
+          background-clip: text;
 }
 
 .hover\:text-gray-900:hover{
@@ -1636,9 +1684,8 @@ html.dark {
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
-.hover\:text-slate-100:hover{
-  --tw-text-opacity: 1;
-  color: rgb(241 245 249 / var(--tw-text-opacity));
+.hover\:text-transparent:hover{
+  color: transparent;
 }
 
 .prose-headings\:font-heading :is(:where(h1, h2, h3, h4, h5, h6, th):not(:where([class~="not-prose"] *))){
@@ -1696,19 +1743,9 @@ html.dark {
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
-.dark .dark\:hover\:bg-slate-100:hover{
-  --tw-bg-opacity: 1;
-  background-color: rgb(241 245 249 / var(--tw-bg-opacity));
-}
-
 .dark .dark\:hover\:text-slate-100:hover{
   --tw-text-opacity: 1;
   color: rgb(241 245 249 / var(--tw-text-opacity));
-}
-
-.dark .dark\:hover\:text-gray-900:hover{
-  --tw-text-opacity: 1;
-  color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
 @media (min-width: 640px){
