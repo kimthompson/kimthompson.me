@@ -1279,6 +1279,14 @@ video {
   margin-top: 0.75rem;
 }
 
+.ml-5{
+  margin-left: 1.25rem;
+}
+
+.mt-2{
+  margin-top: 0.5rem;
+}
+
 .flex{
   display: flex;
 }
@@ -1353,6 +1361,10 @@ video {
 
 .basis-3\/4{
   flex-basis: 75%;
+}
+
+.list-disc{
+  list-style-type: disc;
 }
 
 .grid-cols-2{
@@ -1542,6 +1554,14 @@ video {
 
 .not-italic{
   font-style: normal;
+}
+
+.leading-5{
+  line-height: 1.25rem;
+}
+
+.leading-6{
+  line-height: 1.5rem;
 }
 
 .tracking-tight{
@@ -1915,6 +1935,11 @@ html.dark {
     margin-right: 6rem;
   }
 
+  .sm\:mx-10{
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+  }
+
   .sm\:basis-1\/4{
     flex-basis: 25%;
   }
@@ -1942,6 +1967,11 @@ html.dark {
 }
 
 @media (min-width: 768px){
+  .md\:mx-10{
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+  }
+
   .md\:block{
     display: block;
   }
