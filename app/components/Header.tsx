@@ -1,6 +1,7 @@
 import { Theme, useTheme } from '../utils/themeProvider'
 import { FiSun, FiMoon } from 'react-icons/fi'
 import { useEffect, useState } from 'react'
+import { useLocation } from '@remix-run/react'
 
 export default function Header() {
   const [theme, setTheme] = useTheme()
@@ -45,16 +46,18 @@ export default function Header() {
             Kim Thompson
           </a>
         </h1>
-        <p className="text-gray-900 dark:text-slate-100">
-          Web (
-          <a
-            className="text-indigo-500 hover:text-gray-900 dark:hover:text-slate-100"
-            href="/assets/resume.pdf"
-          >
-            + more
-          </a>
-          ) developer. {randomPhrase}
-        </p>
+        {!useLocation().pathname.includes('resume') &&
+          <p className="text-gray-900 dark:text-slate-100">
+            Web (
+            <a
+              className="text-indigo-500 hover:text-gray-900 dark:hover:text-slate-100"
+              href="/resume"
+            >
+              + more
+            </a>
+            ) developer. {randomPhrase}
+          </p>
+        }
       </div>
 
       <a className="hidden md:block" href="/">

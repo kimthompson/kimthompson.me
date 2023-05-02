@@ -1211,6 +1211,14 @@ video {
   right: 1.25rem;
 }
 
+.m-5{
+  margin: 1.25rem;
+}
+
+.m-0{
+  margin: 0px;
+}
+
 .mx-3{
   margin-left: 0.75rem;
   margin-right: 0.75rem;
@@ -1224,6 +1232,11 @@ video {
 .my-2{
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+}
+
+.mx-5{
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
 }
 
 .mb-6{
@@ -1242,8 +1255,36 @@ video {
   margin-top: 0.25rem;
 }
 
+.mb-5{
+  margin-bottom: 1.25rem;
+}
+
+.mb-2{
+  margin-bottom: 0.5rem;
+}
+
+.mb-1{
+  margin-bottom: 0.25rem;
+}
+
+.mb-4{
+  margin-bottom: 1rem;
+}
+
+.-mt-1{
+  margin-top: -0.25rem;
+}
+
+.mt-3{
+  margin-top: 0.75rem;
+}
+
 .flex{
   display: flex;
+}
+
+.grid{
+  display: grid;
 }
 
 .hidden{
@@ -1282,12 +1323,28 @@ video {
   width: 1.2rem;
 }
 
+.w-96{
+  width: 24rem;
+}
+
+.w-48{
+  width: 12rem;
+}
+
 .max-w-sm{
   max-width: 24rem;
 }
 
 .flex-auto{
   flex: 1 1 auto;
+}
+
+.grid-cols-2{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-rows-4{
+  grid-template-rows: repeat(4, minmax(0, 1fr));
 }
 
 .flex-col{
@@ -1304,6 +1361,20 @@ video {
 
 .justify-between{
   justify-content: space-between;
+}
+
+.gap-2{
+  gap: 0.5rem;
+}
+
+.gap-5{
+  gap: 1.25rem;
+}
+
+.space-y-0 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0px * var(--tw-space-y-reverse));
 }
 
 .self-end{
@@ -1360,6 +1431,10 @@ video {
   padding: 0.5rem;
 }
 
+.p-0{
+  padding: 0px;
+}
+
 .py-12{
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -1380,6 +1455,10 @@ video {
 
 .pl-3{
   padding-left: 0.75rem;
+}
+
+.text-center{
+  text-align: center;
 }
 
 .font-heading{
@@ -1406,8 +1485,27 @@ video {
   line-height: 1.5rem;
 }
 
+.text-lg{
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.text-xl{
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-sm{
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
 .font-extrabold{
   font-weight: 800;
+}
+
+.font-semibold{
+  font-weight: 600;
 }
 
 .italic{
@@ -1439,6 +1537,21 @@ video {
 .text-indigo-500{
   --tw-text-opacity: 1;
   color: rgb(99 102 241 / var(--tw-text-opacity));
+}
+
+.text-purple-500{
+  --tw-text-opacity: 1;
+  color: rgb(168 85 247 / var(--tw-text-opacity));
+}
+
+.text-teal-500{
+  --tw-text-opacity: 1;
+  color: rgb(20 184 166 / var(--tw-text-opacity));
+}
+
+.text-pink-500{
+  --tw-text-opacity: 1;
+  color: rgb(236 72 153 / var(--tw-text-opacity));
 }
 
 .transition{
@@ -1741,6 +1854,26 @@ html.dark {
 .dark .dark\:text-gray-900{
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+
+.dark .dark\:text-pink-500{
+  --tw-text-opacity: 1;
+  color: rgb(236 72 153 / var(--tw-text-opacity));
+}
+
+.dark .dark\:text-teal-500{
+  --tw-text-opacity: 1;
+  color: rgb(20 184 166 / var(--tw-text-opacity));
+}
+
+.dark .dark\:text-purple-500{
+  --tw-text-opacity: 1;
+  color: rgb(168 85 247 / var(--tw-text-opacity));
+}
+
+.dark .dark\:text-indigo-500{
+  --tw-text-opacity: 1;
+  color: rgb(99 102 241 / var(--tw-text-opacity));
 }
 
 .dark .dark\:hover\:text-slate-100:hover{
