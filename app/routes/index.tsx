@@ -2,10 +2,9 @@ import { data } from '~/routes/processPosts'
 
 import { LoaderFunction } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
-import { SiRemix } from 'react-icons/si'
 
 import Posts from '../components/Posts'
-import Projects, { Platform } from '../components/Projects.tsx'
+import Projects, { Platform } from '../components/Projects'
 
 export const loader: LoaderFunction = () => data
 
@@ -23,7 +22,15 @@ export default function Index() {
         Platform.android,
         Platform.java,
         Platform.redux,
-        Platform.web
+        Platform.web,
+        Platform.tailwind,
+        Platform.sass,
+        Platform.node,
+        Platform.nextjs,
+        Platform.rails,
+        Platform.css,
+        Platform.html,
+        Platform.webpack,
       ]
     },
   ]
@@ -43,7 +50,7 @@ export default function Index() {
             href="https://www.eff.org"
             className="hover:text-gray-900 dark:hover:text-slate-100"
           >
-          /s
+            /s
           </a>
         </span>
       </h2>
@@ -52,7 +59,9 @@ export default function Index() {
       <h2 className="font-heading text-3xl italic text-gray-900 dark:text-slate-100 px-2 pb-6">
         Recent Indie Projects
       </h2>
-      <Projects projects={indieProjects} />
+      <Projects
+        projects={indieProjects}
+      />
 
       <h2 className="font-heading text-3xl italic text-gray-900 dark:text-slate-100 px-2 pb-6">
         Selected Past Corporate Contributions
@@ -82,7 +91,7 @@ export default function Index() {
         </li>
         <li>
           <a
-            href="https://www.yourclassical.org/story/2021/10/20/listen-to-the-yourclassical-app-on-your-mobile-device" 
+            href="https://www.yourclassical.org/story/2021/10/20/listen-to-the-yourclassical-app-on-your-mobile-device"
             className="transition ease-in-out duration hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-pink-500 hover:via-purple-500 hover:to-teal-500 px-2 my-2"
           >
             Your Classical in React Native for MPR
