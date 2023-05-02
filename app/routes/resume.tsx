@@ -5,12 +5,12 @@ type Props = {
 
 export default function(props: Props) {
   return (
-    <article className="resume flex flex-col text-gray-900 dark:text-slate-100 mx-5">
+    <article className="resume w-[100vw]text-gray-900 dark:text-slate-100 mx-5">
       <section className="summary">
-        <aside className="text-lg font-heading italic mb-5 text-purple-500 dark:text-teal-500">A software engineer with eight years of experience creating applications for web, mobile, and desktop. Currently focused on Swift and SwiftUI, but with extensive React experience and a proven ability to pick up new tools quickly and safely. Places high value on organization and communication, empowering teammates to take on more responsibility and fostering a collaborative and supportive environment. At home vetting new technologies and creating proofs-of-concept.</aside>
+        <aside className="text-md sm:text-lg font-heading italic mb-5 text-purple-500 dark:text-teal-500">A software engineer with eight years of experience creating applications for web, mobile, and desktop. Currently focused on Swift and SwiftUI, but with extensive React experience and a proven ability to pick up new tools quickly and safely. Places high value on organization and communication, empowering teammates to take on more responsibility and fostering a collaborative and supportive environment. At home vetting new technologies and creating proofs-of-concept.</aside>
       </section>
-      <div className="flex gap-5">
-        <div className="">
+      <div className="flex flex-wrap">
+        <div className="basis-full sm:basis-1/3 pr-0 sm:pr-4">
           <section className="key-skills">
             <h2 className="text-xl font-heading italic mb-2 text-indigo-500">Key Skills</h2>
             {/* TODO: Some kind of fun visual? */}
@@ -55,7 +55,7 @@ export default function(props: Props) {
             </ul>
           </section>
         </div>
-        <section className="experience">
+        <section className="experience basis-full sm:basis-2/3">
           <h2 className="text-xl font-heading italic my-2 text-indigo-500">Experience</h2>
           <ul>
             <li>

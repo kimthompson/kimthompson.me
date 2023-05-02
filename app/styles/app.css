@@ -1331,12 +1331,28 @@ video {
   width: 12rem;
 }
 
+.w-\[100vw\]{
+  width: 100vw;
+}
+
 .max-w-sm{
   max-width: 24rem;
 }
 
 .flex-auto{
   flex: 1 1 auto;
+}
+
+.basis-full{
+  flex-basis: 100%;
+}
+
+.basis-1\/4{
+  flex-basis: 25%;
+}
+
+.basis-3\/4{
+  flex-basis: 75%;
 }
 
 .grid-cols-2{
@@ -1349,6 +1365,10 @@ video {
 
 .flex-col{
   flex-direction: column;
+}
+
+.flex-wrap{
+  flex-wrap: wrap;
 }
 
 .items-center{
@@ -1369,6 +1389,10 @@ video {
 
 .gap-5{
   gap: 1.25rem;
+}
+
+.gap-3{
+  gap: 0.75rem;
 }
 
 .space-y-0 > :not([hidden]) ~ :not([hidden]){
@@ -1455,6 +1479,10 @@ video {
 
 .pl-3{
   padding-left: 0.75rem;
+}
+
+.pr-0{
+  padding-right: 0px;
 }
 
 .text-center{
@@ -1886,6 +1914,31 @@ html.dark {
     margin-left: 6rem;
     margin-right: 6rem;
   }
+
+  .sm\:basis-1\/4{
+    flex-basis: 25%;
+  }
+
+  .sm\:basis-3\/4{
+    flex-basis: 75%;
+  }
+
+  .sm\:basis-1\/3{
+    flex-basis: 33.333333%;
+  }
+
+  .sm\:basis-2\/3{
+    flex-basis: 66.666667%;
+  }
+
+  .sm\:pr-4{
+    padding-right: 1rem;
+  }
+
+  .sm\:text-lg{
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
 }
 
 @media (min-width: 768px){
@@ -1901,6 +1954,14 @@ html.dark {
     max-width: 28rem;
   }
 
+  .md\:basis-1\/4{
+    flex-basis: 25%;
+  }
+
+  .md\:basis-3\/4{
+    flex-basis: 75%;
+  }
+
   .md\:flex-row{
     flex-direction: row;
   }
@@ -1908,6 +1969,11 @@ html.dark {
   .md\:text-7xl{
     font-size: 4.5rem;
     line-height: 1;
+  }
+
+  .md\:text-xl{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }
 
