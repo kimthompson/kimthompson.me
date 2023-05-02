@@ -35,13 +35,13 @@ export default function Header() {
     <header className="flex flex-col md:flex-row items-center justify-between py-12 mx-6 sm:mx-24 lg:mx-36 xl:mx-48 2xl:mx-96">
       <a className="md:hidden" href="/">
         <img
-          className="w-24 lg:w-32 hover:animate-wiggle self-end"
+          className="w-24 lg:w-32 hover:animate-wiggle self-end print:hidden"
           src="/assets/grump_full_transparent.png"
         />
       </a>
 
       <div className="flex-auto max-w-sm md:max-w-md lg:max-w-2xl">
-        <h1 className="font-heading font-extrabold tracking-tight text-6xl md:text-7xl lg:text-8xl italic text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-teal-500 mb-3">
+        <h1 className="font-heading font-extrabold tracking-tight text-6xl md:text-7xl lg:text-8xl italic text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-teal-500 mb-3 print:text-black print:text-left">
           <a href="/">
             Kim Thompson
           </a>
@@ -67,7 +67,7 @@ export default function Header() {
         />
       </a>
 
-      <button className="absolute top-8 right-5" onClick={toggleTheme}>
+      <button className="absolute top-8 right-5 print:hidden" onClick={toggleTheme}>
         {theme === Theme.DARK ? (
           <FiSun className="h-9 w-9 p-2 mx-3 rounded-md text-slate-100 dark:text-gray-900 transition ease-in-out duration-300 bg-gray-900 dark:bg-slate-100 hover:-translate-y-1 hover:scale-110" />
         ) : (

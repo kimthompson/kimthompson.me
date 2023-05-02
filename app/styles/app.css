@@ -1211,14 +1211,6 @@ video {
   right: 1.25rem;
 }
 
-.m-5{
-  margin: 1.25rem;
-}
-
-.m-0{
-  margin: 0px;
-}
-
 .mx-3{
   margin-left: 0.75rem;
   margin-right: 0.75rem;
@@ -1263,36 +1255,20 @@ video {
   margin-bottom: 0.5rem;
 }
 
-.mb-1{
-  margin-bottom: 0.25rem;
+.mt-3{
+  margin-top: 0.75rem;
 }
 
 .mb-4{
   margin-bottom: 1rem;
 }
 
-.-mt-1{
-  margin-top: -0.25rem;
-}
-
-.mt-3{
-  margin-top: 0.75rem;
-}
-
 .ml-5{
   margin-left: 1.25rem;
 }
 
-.mt-2{
-  margin-top: 0.5rem;
-}
-
 .flex{
   display: flex;
-}
-
-.grid{
-  display: grid;
 }
 
 .hidden{
@@ -1331,18 +1307,6 @@ video {
   width: 1.2rem;
 }
 
-.w-96{
-  width: 24rem;
-}
-
-.w-48{
-  width: 12rem;
-}
-
-.w-\[100vw\]{
-  width: 100vw;
-}
-
 .max-w-sm{
   max-width: 24rem;
 }
@@ -1355,24 +1319,8 @@ video {
   flex-basis: 100%;
 }
 
-.basis-1\/4{
-  flex-basis: 25%;
-}
-
-.basis-3\/4{
-  flex-basis: 75%;
-}
-
 .list-disc{
   list-style-type: disc;
-}
-
-.grid-cols-2{
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.grid-rows-4{
-  grid-template-rows: repeat(4, minmax(0, 1fr));
 }
 
 .flex-col{
@@ -1397,20 +1345,6 @@ video {
 
 .gap-2{
   gap: 0.5rem;
-}
-
-.gap-5{
-  gap: 1.25rem;
-}
-
-.gap-3{
-  gap: 0.75rem;
-}
-
-.space-y-0 > :not([hidden]) ~ :not([hidden]){
-  --tw-space-y-reverse: 0;
-  margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(0px * var(--tw-space-y-reverse));
 }
 
 .self-end{
@@ -1467,10 +1401,6 @@ video {
   padding: 0.5rem;
 }
 
-.p-0{
-  padding: 0px;
-}
-
 .py-12{
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -1497,10 +1427,6 @@ video {
   padding-right: 0px;
 }
 
-.text-center{
-  text-align: center;
-}
-
 .font-heading{
   font-family: Victor Mono, monospace;
 }
@@ -1525,19 +1451,14 @@ video {
   line-height: 1.5rem;
 }
 
-.text-lg{
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
-
-.text-xl{
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-
 .text-sm{
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+.text-lg{
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 .font-extrabold{
@@ -1554,14 +1475,6 @@ video {
 
 .not-italic{
   font-style: normal;
-}
-
-.leading-5{
-  line-height: 1.25rem;
-}
-
-.leading-6{
-  line-height: 1.5rem;
 }
 
 .tracking-tight{
@@ -1585,16 +1498,6 @@ video {
 .text-indigo-500{
   --tw-text-opacity: 1;
   color: rgb(99 102 241 / var(--tw-text-opacity));
-}
-
-.text-purple-500{
-  --tw-text-opacity: 1;
-  color: rgb(168 85 247 / var(--tw-text-opacity));
-}
-
-.text-teal-500{
-  --tw-text-opacity: 1;
-  color: rgb(20 184 166 / var(--tw-text-opacity));
 }
 
 .text-pink-500{
@@ -1904,26 +1807,6 @@ html.dark {
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
-.dark .dark\:text-pink-500{
-  --tw-text-opacity: 1;
-  color: rgb(236 72 153 / var(--tw-text-opacity));
-}
-
-.dark .dark\:text-teal-500{
-  --tw-text-opacity: 1;
-  color: rgb(20 184 166 / var(--tw-text-opacity));
-}
-
-.dark .dark\:text-purple-500{
-  --tw-text-opacity: 1;
-  color: rgb(168 85 247 / var(--tw-text-opacity));
-}
-
-.dark .dark\:text-indigo-500{
-  --tw-text-opacity: 1;
-  color: rgb(99 102 241 / var(--tw-text-opacity));
-}
-
 .dark .dark\:hover\:text-slate-100:hover{
   --tw-text-opacity: 1;
   color: rgb(241 245 249 / var(--tw-text-opacity));
@@ -1940,14 +1823,6 @@ html.dark {
     margin-right: 2.5rem;
   }
 
-  .sm\:basis-1\/4{
-    flex-basis: 25%;
-  }
-
-  .sm\:basis-3\/4{
-    flex-basis: 75%;
-  }
-
   .sm\:basis-1\/3{
     flex-basis: 33.333333%;
   }
@@ -1959,19 +1834,9 @@ html.dark {
   .sm\:pr-4{
     padding-right: 1rem;
   }
-
-  .sm\:text-lg{
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-  }
 }
 
 @media (min-width: 768px){
-  .md\:mx-10{
-    margin-left: 2.5rem;
-    margin-right: 2.5rem;
-  }
-
   .md\:block{
     display: block;
   }
@@ -1984,14 +1849,6 @@ html.dark {
     max-width: 28rem;
   }
 
-  .md\:basis-1\/4{
-    flex-basis: 25%;
-  }
-
-  .md\:basis-3\/4{
-    flex-basis: 75%;
-  }
-
   .md\:flex-row{
     flex-direction: row;
   }
@@ -1999,11 +1856,6 @@ html.dark {
   .md\:text-7xl{
     font-size: 4.5rem;
     line-height: 1;
-  }
-
-  .md\:text-xl{
-    font-size: 1.25rem;
-    line-height: 1.75rem;
   }
 }
 
@@ -2245,14 +2097,14 @@ html.dark {
     line-height: 1.75rem;
   }
 
-  .lg\:text-sm{
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-  }
-
   .lg\:text-xl{
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .lg\:text-sm{
+    font-size: 0.875rem;
+    line-height: 1.25rem;
   }
 }
 
@@ -2267,5 +2119,28 @@ html.dark {
   .\32xl\:mx-96{
     margin-left: 24rem;
     margin-right: 24rem;
+  }
+}
+
+@media print{
+  .print\:m-0{
+    margin: 0px;
+  }
+
+  .print\:hidden{
+    display: none;
+  }
+
+  .print\:p-0{
+    padding: 0px;
+  }
+
+  .print\:text-left{
+    text-align: left;
+  }
+
+  .print\:text-black{
+    --tw-text-opacity: 1;
+    color: rgb(0 0 0 / var(--tw-text-opacity));
   }
 }

@@ -58,8 +58,8 @@ export default function(props: Props) {
         <section className="experience basis-full sm:basis-2/3">
           <h2 className="text-lg lg:text-xl font-heading italic my-2 text-indigo-500">Experience</h2>
           <div className="daugherty">
-            <h3 className="font-heading italic text-md lg:text-lg flex justify-between">Daugherty Business Solutions, Minneapolis, MN <span>November 2020 - Present</span></h3>
-            <h4 className="font-heading italic mb-2">Consultant & Software Engineer</h4>
+            <h3 className="font-heading italic text-md lg:text-lg flex justify-between flex-wrap">Daugherty Business Solutions, Minneapolis, MN <span>November 2020 - Present</span></h3>
+            <h4 className="font-heading italic mb-2 text-indigo-500">Consultant & Software Engineer</h4>
             <ul>
               <li className="mb-4">
                 <span className="font-semibold">Cox Communications</span> &mdash; Led a team of iOS engineers working on maintaining and building features for Cox App on iOS. Collaborated with product and the scrum master to figure out which features were coming down the pipeline and what should be worked on this sprint. Managed our build and release processes on the developer side, communicating to QA, Product, and DevOps exactly what was in each build and ensuring it all got out there on time with minimal bugs. Drove a lot of the effort to do as much new development as possible with SwiftUI, hopefully minimizing how many components would have to be overhauled when the new version of the app is ready to go.
