@@ -1,18 +1,216 @@
 ---
 title: How to add animations to Remix navigation
 date: 2023-04-19
-blurb: 
 meta:
   title: How to add animations to Remix navigation
   date: 2023-04-19
-  blurb: 
----
-
----
-
-###### {attributes.blurb}
-
 ---
 
 ## {attributes.title}
 
+When I was fixing up the [Vyr](https://spicetower.games/vyr) subsite ahead of our first public playtest, I decided it would be cool if that main page showed all of the rules, lore, upcoming events, and so on in a carousel. I also wanted to keep each endpoint separate and I did not want to install or troubleshoot yet another React carousel from NPM. Therefore, I decided I would make something that *looked* like a carousel by taking Remix's `<Outlet />` for the Vyr route and simply using something like [Framer Motion](https://www.framer.com/motion/) to animate the transitions. Much to my surprise, it really was as simple as that!
+
+```typescript
+  <motion.div
+    key={currentTab.order}
+    initial={{ x: '+10%', opacity: 0 }}
+    animate={{ x: '0', y: '0', opacity: 1 }}
+    exit={{ x: '-10%', opacity: 0 }}
+    transition={{ duration: 0.5 }}
+    className="prose prose-stone"
+  >
+    <Outlet />
+  </motion.div>
+```
+
+This setup simply makes it look like each page slides to the left as the user navigates. To get that true slideshow effect, we need to animate out to the left if we're moving "forward" and out to the right if we're moving "backward". I also added a slide in from the bottom animation for the first time the user hits our page.
+
+To facilitate this, I created a `<VyrTab />` object that tracks the order of each tab, with the root page being `-1`. I also found a React hook [`usePrevious()`](https://usehooks.com/usePrevious/) that keeps track of where we were last, making it so that we can compare it to where we are now and use that to decide which transition to return.
+
+```typescript
+import { useRef, useEffect } from 'react'
+
+export default function usePrevious(value: any) {
+  const ref = useRef(value)
+
+  useEffect(() => {
+    ref.current = value
+  }, [value])
+
+  return ref.current
+}
+```
+This is how it all came together.
+
+```typescript
+import { Outlet, useLocation, useNavigate } from '@remix-run/react'
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+
+import { VyrLogo } from '~/components/svgs/Vyr'
+import usePrevious from '~/utils/usePrevious'
+
+export enum VyrTabType {
+  rules = 'rules',
+  lore = 'lore',
+  events = 'events',
+  base = 'base',
+}
+
+export type VyrTab = {
+  type: VyrTabType
+  order: number
+  prettyName: string
+  destination: string
+}
+
+interface TabAnimationParameters {
+  currentTab: any
+  previousTab: any
+  isBased: boolean
+  isExit?: boolean
+}
+
+export default function Vyr() {
+  const VyrInfoTabs: { [key in VyrTabType]: VyrTab } = {
+    [VyrTabType.base]: {
+      type: VyrTabType.base,
+      order: -1,
+      prettyName: '',
+      destination: '/vyr',
+    },
+    [VyrTabType.lore]: {
+      type: VyrTabType.lore,
+      order: 0,
+      prettyName: 'Lore',
+      destination: '/vyr/lore',
+    },
+    [VyrTabType.rules]: {
+      type: VyrTabType.rules,
+      order: 1,
+      prettyName: 'Rules',
+      destination: '/vyr/rules',
+    },
+    [VyrTabType.events]: {
+      type: VyrTabType.events,
+      order: 2,
+      prettyName: 'Events',
+      destination: '/vyr/events',
+    },
+  }
+
+  const navigate = useNavigate()
+  const location = useLocation()
+  const [currentTab, setCurrentTab] = useState(VyrInfoTabs.base)
+  const previousTab = usePrevious(currentTab)
+
+  function switchToTab(tab: VyrTab) {
+    setCurrentTab(tab)
+    navigate(tab.destination)
+  }
+
+  useEffect(() => {
+    switch (location.pathname) {
+      case '/vyr':
+        switchToTab(VyrInfoTabs.rules)
+        break
+      case '/vyr/events':
+        switchToTab(VyrInfoTabs.events)
+        break
+      case '/vyr/lore':
+        switchToTab(VyrInfoTabs.lore)
+        break
+      case '/vyr/rules':
+        switchToTab(VyrInfoTabs.rules)
+        break
+      default:
+        break
+    }
+  }, [])
+
+  const chooseTabAnimation = ({
+    currentTab,
+    previousTab,
+    isBased,
+    isExit = false,
+  }: TabAnimationParameters) => {
+    const intensity = Math.abs(currentTab - previousTab) * 10
+
+    const initialVariants = {
+      firstLoad: { y: `+10%`, opacity: 0 },
+      next: { x: `+${intensity}%`, opacity: 0 },
+      previous: { x: `-${intensity}%`, opacity: 0 },
+    }
+
+    const exitVariants = {
+      firstLoad: { y: `-10%`, opacity: 0 },
+      next: { x: `-${intensity}%`, opacity: 0 },
+      previous: { x: `+${intensity}%`, opacity: 0 },
+    }
+
+    if (isBased) {
+      return isExit ? exitVariants.firstLoad : initialVariants.firstLoad
+    }
+
+    if (isExit) {
+      return currentTab > previousTab ? exitVariants.next : exitVariants.previous
+    }
+
+    return currentTab > previousTab
+      ? initialVariants.next
+      : initialVariants.previous
+  }
+
+  return (
+    <div className="flex flex-col items-center">
+      <VyrLogo className="w-40 h-40 md:w-80 md:h-80" />
+
+      <div className="flex w-1/4 mb-16">
+        <button
+          onClick={() => switchToTab(VyrInfoTabs.lore)}
+          className={`flex-1 p-3 ${currentTab.type === VyrTabType.lore ? 'opacity-100' : 'opacity-50'
+            }`}
+        >
+          {VyrInfoTabs.lore.prettyName}
+        </button>
+        <button
+          onClick={() => switchToTab(VyrInfoTabs.rules)}
+          className={`flex-1 p-3 ${currentTab.type === VyrTabType.rules ? 'opacity-100' : 'opacity-50'
+            }`}
+        >
+          {VyrInfoTabs.rules.prettyName}
+        </button>
+        <button
+          onClick={() => switchToTab(VyrInfoTabs.events)}
+          className={`flex-1 p-3 ${currentTab.type === VyrTabType.events ? 'opacity-100' : 'opacity-50'
+            }`}
+        >
+          {VyrInfoTabs.events.prettyName}
+        </button>
+      </div>
+
+      <motion.div
+        key={currentTab.order}
+        initial={chooseTabAnimation({
+          currentTab: currentTab.order,
+          previousTab: previousTab.order,
+          isBased: previousTab.type === VyrTabType.base,
+        })}
+        animate={{ x: '0', y: '0', opacity: 1 }}
+        exit={chooseTabAnimation({
+          currentTab: currentTab.order,
+          previousTab: previousTab.order,
+          isBased: previousTab.type === VyrTabType.base,
+          isExit: true,
+        })}
+        transition={{ duration: 0.5 }}
+        className="prose prose-stone"
+      >
+        <Outlet />
+      </motion.div>
+    </div>
+  )
+}
+```
+
+You can see it in action [here](https://spicetower.games/vyr/rules). That being said, I'm seeing a flash every once in a while, so I'll probably update this post with some small fixes the next time I work on the website. Cheers! 🍻

@@ -40,7 +40,9 @@ export default function Header() {
 
       <div className="flex-auto max-w-sm md:max-w-md lg:max-w-2xl">
         <h1 className="font-heading font-extrabold tracking-tight text-6xl md:text-7xl lg:text-8xl italic text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-teal-500 mb-3">
-          Kim Thompson
+          <a href="/">
+            Kim Thompson
+          </a>
         </h1>
         <p className="text-gray-900 dark:text-slate-100">
           Web (

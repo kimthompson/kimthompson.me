@@ -125,7 +125,7 @@ code,
 kbd,
 samp,
 pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: Fantasque Sans Mono, monospace;
   /* 1 */
   font-size: 1em;
   /* 2 */
@@ -1238,10 +1238,6 @@ video {
   margin-left: 0.5rem;
 }
 
-.mt-2{
-  margin-top: 0.5rem;
-}
-
 .mt-1{
   margin-top: 0.25rem;
 }
@@ -1262,14 +1258,6 @@ video {
   height: 2.25rem;
 }
 
-.h-5{
-  height: 1.25rem;
-}
-
-.h-\[1\.1rem\]{
-  height: 1.1rem;
-}
-
 .h-\[1\.2rem\]{
   height: 1.2rem;
 }
@@ -1288,14 +1276,6 @@ video {
 
 .w-9{
   width: 2.25rem;
-}
-
-.w-5{
-  width: 1.25rem;
-}
-
-.w-\[1\.1rem\]{
-  width: 1.1rem;
 }
 
 .w-\[1\.2rem\]{
@@ -1530,6 +1510,19 @@ video {
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Fantasque Sans Mono';
+
+  src: url('/fonts/FantasqueSansMono/Fantasque Sans Mono Regular Nerd Font Complete Mono.ttf')
+    format('ttf');
+
+  font-weight: 400;
+
+  font-style: normal;
+
+  font-display: swap;
+}
+
 ::-moz-selection {
   background-color: #26a69a;
   color: #fefefe;
@@ -1542,7 +1535,11 @@ video {
 
 pre,
 code {
-  font-family: 'Victor Mono', monospace;
+  font-family: 'Fantasque Sans Mono', Lucida, Monaco, Courier, monospace;
+}
+
+.hljs {
+  background: transparent !important;
 }
 
 html.dark {
@@ -1656,11 +1653,6 @@ html.dark {
 .hover\:animate-wiggle:hover{
   -webkit-animation: wiggle 0.5s linear infinite;
           animation: wiggle 0.5s linear infinite;
-}
-
-.hover\:bg-teal-500:hover{
-  --tw-bg-opacity: 1;
-  background-color: rgb(20 184 166 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-gradient-to-r:hover{

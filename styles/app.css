@@ -41,6 +41,15 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Fantasque Sans Mono';
+  src: url('/fonts/FantasqueSansMono/Fantasque Sans Mono Regular Nerd Font Complete Mono.ttf')
+    format('ttf');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 ::selection {
   background-color: #26a69a;
   color: #fefefe;
@@ -48,7 +57,11 @@
 
 pre,
 code {
-  font-family: 'Victor Mono', monospace;
+  font-family: 'Fantasque Sans Mono', Lucida, Monaco, Courier, monospace;
+}
+
+.hljs {
+  background: transparent !important;
 }
 
 html.dark {

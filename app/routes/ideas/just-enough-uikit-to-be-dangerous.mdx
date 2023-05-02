@@ -8,35 +8,57 @@ meta:
   blurb: They said I should focus on SwiftUI and that UIKit was dying. They were wrong.
 ---
 
----
-
 ###### {attributes.blurb}
-
----
 
 ## {attributes.title}
 
-This post was inspired by a few questions I've been fielding from other developers in my agency trying to pivot into iOS development. They have been learning SwiftUI and loving it, yet when their clients presented them with a task on their iOS application, they were faced with a Storyboard.
+This post was inspired by a few questions I've been fielding from other developers in my agency trying to pivot into iOS development. They have been learning SwiftUI and loving it, yet on the rare occasion the client assigned them some iOS work, they were faced with a Storyboard.
 
-My first time messing with a Storyboard, I thought the principle was kind of cool. I was primarily a frontend dev fresh out of college and had dabbled in UX and design, so drag-and-drop interfaces were familiar to me.
+Pretend for a moment that you're a JavaScript developer who has been running through [100 Days of SwiftUI](https://www.hackingwithswift.com/100/swiftui) and your first assignment is to add some text to a view. Should be easy! You crack open XCode and are faced with something like this.
 
-I soon learned to despise it. 
+![A gif showing the developer what godforsaken sequence of buttons they must click on next](https://koenig-media.raywenderlich.com/uploads/2019/08/Storyboards-1_36.gif)
+*Credit: [Kodeco](www.kodeco.com/5055362-ios-storyboards-getting-started)*
 
-If you're a developer who has been running through [100 Days of SwiftUI]() or something and the first page you're asked to edit is something like this:
+It *looks* like drag-and-drop, but clicking and dragging from the sidebar to your canvas doesn't do anything you'd expect. How do you add new items? By pressing <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd>, obviously! Need to add about 5 points of to the end of something? No problem! Just hold down <kbd>Control</kbd> and click and drag the item you want to add padding to to a nearby item and set the trailing constraint constant value to 5! What's that, suddenly you have errors? Don't you **dare** let Xcode auto fix, because you will see the devil and he'll try to rip your heart out through your kneecaps.
 
-TODO: Add example image I have the rights to (set up example app)
+. . . and now Xcode has crashed.
 
-### TODO: Basic controls (i.e. hidden hotkey combinations to remember)
+People complain to me a lot about CSS, but coming from a web development background, this has always seemed absolutely harebrained to me. Just bonkers bananapants.
 
-1. Command + Shift + L to pull up the "Library", then drag into the sidebar
-2. Hold control and click and drag to whatever constraint relationship you wish to describe
+Thanks for listening to my rant. Now, as thanks, an ever growing list of tips and tricks I found helpful as someone who was forced to get sort of passable at this.
 
-### TODO: Tips
+### Basic controls
 
-1. Use Stackviews wherever possible so you don't have to worry about nightmare constraint cleanups when you simply want to, say, show or hide a component under certain conditions.
-2. Honestly, I'd create minimal storyboards and throw as much as possible into a `setUpUI()` function that you can call on `viewDidLoad()`. TODO: show how
-3. It will sometimes offer to help you and automatically fix constraints. It's lying. Ignore it.
-4. It will sometimes say there's an error in your constraints and automatically offer to fix it. Just run the code as is with your "error" included first, since it's probably wrong and applying its "fix" might break everything.
+![Real Yakuza use a Gamepad meme](https://i.kym-cdn.com/photos/images/newsfeed/002/149/538/0c9.png)
 
-### Barely relevant
-The refactor feature in XCode is way better than the one on VSCode when it comes to renaming things!
+1. <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd> to pull up the Library window, search for the UI component you're looking for, then drag it into the sidebar or storyboard roughly where you're going to want it.
+2. Hold down <kbd>Control</kbd> and click and drag to whatever constraint relationship you wish to describe. To set something like width or height, click and drag to the object itself.
+3. The left sidebar will show you all the constraints you have on objects. Ignore it. Instead, select a UI component and check out and edit its constraints in the right sidebar, under the third to last subtab.
+4. Speaking of this right sidebar, it's going to be your guiding light during this process. Let's go over what each of the last four tabs are, since you'll be using them a lot.
+
+![Identity Inspector](/assets/blog/xcode-storyboard-right-sidebar-tabs-1.png)
+Contains basic traits, like the Class that this component is representing.
+
+![Attributes Inspector](/assets/blog/xcode-storyboard-right-sidebar-tabs-2.png)
+This is where you can set a lot of things that determine how this component looks, like setting the default text or background color or marking it as disabled.
+
+![Size Inspector](/assets/blog/xcode-storyboard-right-sidebar-tabs-3.png)
+Here is where you should come to look at and edit your constraints. 
+
+![Connections Inspector](/assets/blog/xcode-storyboard-right-sidebar-tabs-4.png)
+Contains any outlets tied to this component.
+
+5. You can't really set up much interactivity in the Storyboard. Instead, you'll need to do that in the Storyboard's ViewController. To create an outlet, simply hold down <kbd>Control</kbd> then click and drag over to the header of your ViewController. From there follow the popup window to enter a name for it. If you ever have to rename it or knock out the connection by accident, you'll get a bunch of baffling errors, but all you really need to do is delete this outlet in the Connections Inspector and try again.
+6. <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>J</kbd> pulls up whatever file you currently have open in the sidebar.
+
+### Tips
+
+1. Use Stackviews wherever possible so you don't have to worry about giving each constraint an outlet and setting each one to 0 when you, say, simply want want to hide a component under certain conditions.
+2. Honestly, I'd create minimal storyboards and throw as much as possible into a `setUpUI()` function that you can call on `viewDidLoad()`. [Here](https://dkoenig.medium.com/back-in-time-build-an-app-without-storyboard-in-uikit-7dc65d50510)'s a rather extreme example showing how you could do *everything* in code if you wished. 
+3. Xcode will sometimes offer to help you and automatically fix constraints. Xcode is a liar. Ignore Xcode.
+4. Xcode will sometimes say there's an error in your constraints when really it just needs some coffee. Attempt to run your code as is with the "error" included first, since Xcode may be attempting to send you down a multi-hour rabbit hole applying any "fixes" it offers might break everything. Lots of errors magically disappear when you reboot.
+
+### Faint praise
+
+The refactor feature in Xcode is way better than the one on VSCode when it comes to renaming things!
+
