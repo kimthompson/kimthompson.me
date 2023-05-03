@@ -22,6 +22,7 @@ export default function Header() {
       'Aiding and abetting',
       'Runs on caffeine',
       'Re: Elon — I told you so',
+      'Oh no, she\'s on Vim again',
     ]
 
     setRandomPhrase(lol[Math.floor(Math.random() * lol.length)])

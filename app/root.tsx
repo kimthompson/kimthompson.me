@@ -35,7 +35,7 @@ function App() {
         <Meta />
         <Links />
       </head>
-      <body className="w-screen bg-slate-100 dark:bg-gray-900">
+      <body className="w-screen bg-slate-100 dark:bg-gray-900 overflow-x-hidden">
         <Header />
         <Outlet />
         <Footer />
