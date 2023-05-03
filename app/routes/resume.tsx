@@ -67,7 +67,7 @@ export default function() {
                   <span className="font-semibold">Cox Communications</span> &mdash; Led a team of iOS engineers working on maintaining and building features for Cox App on iOS. Collaborated with stakeholders to figure out which features were coming down the pipeline and what should be worked on this sprint. Managed our build and release processes on the developer side, communicating to QA, Product, and DevOps exactly what was in each build and ensuring it all got out there on time with minimal bugs.
                   <ul className="list-disc ml-5 mt-1">
                     <li>Reworked the role of iOS technical lead to be less of a bottleneck, teaching team members how the application's build system worked and persuading the higher-ups to let the whole team in on pull requests and code reviews.</li>
-                    <li>Built the initial proof-of-concept for Cox’s interactive Proactive & Preventative system. Demonstrated the power of SwiftUI animations to the lead architect, demonstrating that it was easy to simulate screen transitions.</li>
+                    <li>Built the initial proof-of-concept for Cox’s interactive "Proactive & Preventative" system. Demonstrated the power of SwiftUI animations to the lead architect, demonstrating that it was easy to simulate screen transitions.</li>
                     <li>Drove the effort to do as much new development as possible in SwiftUI, with the aim of minimizing the work of integrating the new “White Label” application.</li>
                   </ul>
                   <span className="font-heading italic text-xs text-indigo-500 ml-5">Relevant tech: Swift, SwiftUI, GraphQL, UIKit, Objective-C, AWS, Jenkins</span>
@@ -76,7 +76,7 @@ export default function() {
                   <span className="font-semibold">Best Buy</span> &mdash; Mentored a team of full stack engineers on a rebuild of the CMS used by store leaders to lay out BestBuy.com pages. Participated in agile ceremonies and design meetings, sometimes with the rest of the team, sometimes just with leaders. Mentored a team of junior engineers, meeting with them regularly for career advice, pair programming, and Git detangling.
                   <ul className="list-disc ml-5 mt-1">
                     <li>Improved the Google Lighthouse score of Best Buy’s CMS for store managers from 55 to 95, primarily through route-based chunking and import refactoring. The initial page load on mobile shrunk from three seconds to less than one.</li>
-                    <li>Defined the team's coding and testing standards and set up Jenkins pipelines to enforce those standards.</li>
+                    <li>Defined the team's testing standards and set up Jenkins pipelines to enforce them.</li>
                     <li>Collaborated with the UX designer to revamp and expand our React Component Library, largely based on Material UI, and document it with Storybook.</li>
                   </ul>
                   <span className="font-heading italic text-xs text-indigo-500 ml-5">Relevant tech: React, Redux, TypeScript, HTML, CSS, Java, Spring, SQL, Jenkins</span>
@@ -94,11 +94,12 @@ export default function() {
             <li className="mb-4">
               <h3 className="font-heading italic text-md lg:text-lg flex justify-between flex-wrap">Minnesota Public Radio, Saint Paul, MN <span>Aug 2018 &mdash; Nov 2020</span></h3>
               <h4 className="font-heading italic mb-2">Web Developer</h4>
-              <p>Developed applications for iOS, web, and Windows, ranging from large agile projects with a team to small solo projects.</p>
+              <p>Created new websites and applications for American Public Media while maintaining the old ones.</p>
               <ul className="list-disc ml-5 mt-1">
                 <li>Proposed that we use Next.js for our rebuild of MPR News when we ran into trouble getting React 16.x to play nice with server-side rendering. Built a vertical slice of our website in the next 48 hours that got all stakeholders on board.</li>
                 <li>Reworked APM Reports to pass all of Google’s AMP requirements, increasing traffic on their breaking stories threefold.</li>
                 <li>Architected the first version of YourClassical for iOS, Android, and web built with React Native. Presented it to the whole technology division.</li>
+                <li>Pushed our React component libraries onto NPM, as MPR is in part a public service.</li>
               </ul>
               <span className="font-heading italic text-xs text-indigo-500 ml-5">Relevant tech: React, JavaScript, TypeScript, Node.js, Next.js, HTML, CSS, React Native, Ruby on Rails, GraphQL, PHP</span>
             </li>
@@ -108,7 +109,7 @@ export default function() {
               <p>Developed applications for iOS, web, and Windows, ranging from large agile projects with a team to small solo projects.</p>
               <ul className="list-disc ml-5 mt-1">
                 <li>Wrote the company’s frontend web standards.</li>
-                <li>Taught the designers how to write solid enough HTML and CSS, as well as how to use VS Code. Stressed to the owner that frontend web development is truly software development and cannot simply be offloaded onto a designer.</li>
+                <li>Taught the designers how to write solid enough HTML and CSS, as well as how to use VS Code. Stressed to the owner that frontend web development is truly software development and cannot simply be offloaded onto designers with no relevant experience.</li>
                 <li>Learned to develop on new platforms in a couple of weeks multiple times, ranging from iOS to Windows to Xamarin.</li>
               </ul>
               <span className="font-heading italic text-xs text-indigo-500 ml-5">Relevant tech: Objective-C, UIKit, Swift, C#, Xamarin, JavaScript, HTML, CSS</span>
