@@ -39,7 +39,7 @@ export default function Index() {
       <Projects projects={indieProjects} />
 
       <h2 className="font-heading text-3xl italic text-gray-900 dark:text-slate-100">
-        Selected Past Corporate Contributions
+        Selected Corporate Contributions
       </h2>
       <Projects projects={corpoProjects} />
     </main>

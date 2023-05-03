@@ -15,14 +15,14 @@ export default function Header() {
 
   const pickRandomPhrase = () => {
     let lol = [
-      'Anti-crypto enthusiast',
-      'Cripplingly addicted to FFXIV',
-      'No double quotes, no semicolons',
-      'Putting my cats through college',
-      'Aiding and abetting',
-      'Runs on caffeine',
-      'Re: Elon — I told you so',
-      'Oh no, she\'s on Vim again',
+      'Anti-crypto enthusiast.',
+      'Cripplingly addicted to FFXIV.',
+      'No double quotes, no semicolons.',
+      'Putting my cats through college.',
+      'Aiding and abetting.',
+      'Runs on caffeine.',
+      'Re: Elon — I told you so.',
+      'Oh no, she\'s on Vim again.',
     ]
 
     setRandomPhrase(lol[Math.floor(Math.random() * lol.length)])
@@ -50,7 +50,7 @@ export default function Header() {
         </h1>
         {!useLocation().pathname.includes('resume') &&
           <p className="text-gray-900 dark:text-slate-100 transition ease-in-out duration-300">
-            Web (
+            Frontend (
             <a
               className="text-indigo-500 hover:text-gray-900 dark:hover:text-slate-100"
               href="/resume"
