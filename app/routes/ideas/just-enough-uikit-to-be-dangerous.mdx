@@ -1,10 +1,10 @@
 ---
 title: Just enough UIKit to be dangerous
-date: 2023-04-19
+date: 2023-05-01
 blurb: They said I should focus on SwiftUI and that UIKit was dying. They were wrong.
 meta:
   title: Just enough UIKit to be dangerous
-  date: 2023-04-19
+  date: 2023-05-01
   blurb: They said I should focus on SwiftUI and that UIKit was dying. They were wrong.
 ---
 
@@ -36,17 +36,33 @@ Thanks for listening to my rant. Now, as thanks, an ever growing list of tips an
 3. The left sidebar will show you all the constraints you have on objects. Ignore it. Instead, select a UI component and check out and edit its constraints in the right sidebar, under the third to last subtab.
 4. Speaking of this right sidebar, it's going to be your guiding light during this process. Let's go over what each of the last four tabs are, since you'll be using them a lot.
 
-![Identity Inspector](/assets/blog/xcode-storyboard-right-sidebar-tabs-1.png)
-Contains basic traits, like the Class that this component is representing.
+<figure>
+  <img src="/assets/blog/xcode-storyboard-right-sidebar-tabs-1.png" alt="Xcode's Identity Inspector" />
+  <figcaption><em>
+    Contains basic traits, like the Class that this component is representing.
+  </em></figcaption>
+</figure>
 
-![Attributes Inspector](/assets/blog/xcode-storyboard-right-sidebar-tabs-2.png)
-This is where you can set a lot of things that determine how this component looks, like setting the default text or background color or marking it as disabled.
+<figure>
+  <img src="/assets/blog/xcode-storyboard-right-sidebar-tabs-2.png" alt="Xcode's Attributes Inspector" />
+  <figcaption><em>
+    This is where you can set a lot of things that determine how this component looks, like setting the default text or background color or marking it as disabled.
+  </em></figcaption>
+</figure>
 
-![Size Inspector](/assets/blog/xcode-storyboard-right-sidebar-tabs-3.png)
-Here is where you should come to look at and edit your constraints. 
+<figure>
+  <img src="/assets/blog/xcode-storyboard-right-sidebar-tabs-3.png" alt="Xcode's Size Inspector" />
+  <figcaption><em>
+    Here is where you should come to look at and edit your constraints. 
+  </em></figcaption>
+</figure>
 
-![Connections Inspector](/assets/blog/xcode-storyboard-right-sidebar-tabs-4.png)
-Contains any outlets tied to this component.
+<figure>
+  <img src="/assets/blog/xcode-storyboard-right-sidebar-tabs-4.png" alt="Xcode's Connections Inspector" />
+  <figcaption><em>
+    Contains any outlets tied to this component.
+  </em></figcaption>
+</figure>
 
 5. You can't really set up much interactivity in the Storyboard. Instead, you'll need to do that in the Storyboard's ViewController. To create an outlet, simply hold down <kbd>Control</kbd> then click and drag over to the header of your ViewController. From there follow the popup window to enter a name for it. If you ever have to rename it or knock out the connection by accident, you'll get a bunch of baffling errors, but all you really need to do is delete this outlet in the Connections Inspector and try again.
 6. <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>J</kbd> pulls up whatever file you currently have open in the sidebar.

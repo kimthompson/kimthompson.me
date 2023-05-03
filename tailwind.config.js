@@ -44,6 +44,12 @@ module.exports = {
             h6: {
               color: theme('colors.indigo.500'),
             },
+            'code::before': {
+              content: 'none',
+            },
+            'code::after': {
+              content: 'none',
+            }
           },
         },
       }),

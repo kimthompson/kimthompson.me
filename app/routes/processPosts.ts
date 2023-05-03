@@ -8,6 +8,7 @@ import * as two from './ideas/an-ode-to-victor-mono.mdx'
 import * as three from './ideas/just-enough-uikit-to-be-dangerous.mdx'
 import * as four from './ideas/a-rolling-list-of-swiftui-tips-and-tricks.mdx'
 import * as five from './ideas/uialertcontrollers-in-swiftui.mdx'
+import * as six from './ideas/pourover-fiend-dev-journal.mdx'
 
 function postFromModule(mod: any) {
   return {
@@ -30,5 +31,6 @@ export const data = {
     postFromModule(three),
     postFromModule(four),
     postFromModule(five),
+    postFromModule(six),
   ].sort(sortPostsByDate),
 }
