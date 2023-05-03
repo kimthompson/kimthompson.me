@@ -33,22 +33,23 @@ export default function Header() {
   }, [])
 
   return (
-    <header className="flex flex-col md:flex-row items-center justify-between py-12 mx-6 sm:mx-24 lg:mx-36 xl:mx-48 2xl:mx-96">
+    <header className="flex flex-col md:flex-row items-center justify-between py-12 mx-6 sm:mx-24 lg:mx-36 xl:mx-48 2xl:mx-96 print:text-black print:text-left">
       <a className="md:hidden" href="/">
         <img
           className="w-24 lg:w-32 hover:animate-wiggle self-end print:hidden"
+          alt="An adorble rendition of me, glaring at my computer and clutching a Red Bull."
           src="/assets/grump_full_transparent.png"
         />
       </a>
 
       <div className="flex-auto max-w-sm md:max-w-md lg:max-w-2xl">
-        <h1 className="font-heading font-extrabold tracking-tight text-6xl md:text-7xl lg:text-8xl italic text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-teal-500 mb-3 print:text-black print:text-left">
+        <h1 className="font-heading font-extrabold tracking-tight text-6xl md:text-7xl lg:text-8xl italic text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-teal-500 transition ease-in-out duration-300 hover:text-slate-100 mb-3">
           <a href="/">
             Kim Thompson
           </a>
         </h1>
         {!useLocation().pathname.includes('resume') &&
-          <p className="text-gray-900 dark:text-slate-100">
+          <p className="text-gray-900 dark:text-slate-100 transition ease-in-out duration-300">
             Web (
             <a
               className="text-indigo-500 hover:text-gray-900 dark:hover:text-slate-100"
@@ -64,6 +65,7 @@ export default function Header() {
       <a className="hidden md:block" href="/">
         <img
           className="w-24 lg:w-32 hover:animate-wiggle self-end"
+          alt="An adorble rendition of me, glaring at my computer and clutching a Red Bull."
           src="/assets/grump_full_transparent.png"
         />
       </a>

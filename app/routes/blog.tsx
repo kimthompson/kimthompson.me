@@ -1,5 +1,5 @@
 import styles from '@catppuccin/highlightjs/css/catppuccin-mocha.css'
-import { LinksFunction } from '@remix-run/node'
+import type { LinksFunction } from '@remix-run/node'
 import { Outlet } from '@remix-run/react'
 
 export const links: LinksFunction = () => {

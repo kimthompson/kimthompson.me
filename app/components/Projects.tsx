@@ -1,4 +1,5 @@
-import { Project, Technology } from '../utils/projectData'
+import type { Project } from '../utils/projectData'
+import { Technology } from '../utils/projectData'
 
 type Props = {
   projects: Project[]
@@ -42,7 +43,7 @@ const PlatformIcon = (props: {
       viewBox={viewBox(platform)}
       fill="url(#grad1)"
       strokeWidth={0}
-      className="w-[1.2rem] h-[1.2rem] ml-2"
+      className="w-[1.2rem] h-[1.2rem] ml-0 mr-2 sm:ml-2 sm:mr-0"
       {...rest}
     >
       <defs>
@@ -87,7 +88,7 @@ export default function Projects({ projects }: Props) {
     <ul className="text-gray-900 dark:text-slate-100 pb-12">
       {projects.map((project: Project) => (
         <li key={project.name} className="mt-1">
-          <div className="flex">
+          <div className="flex flex-col sm:flex-row">
             {project.link
               ? <a className="transition ease-in-out duration-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-pink-500 hover:via-purple-500 hover:to-teal-500" href={project.link}>{project.name}{' '}</a>
               : <span>{project.name}{' '}</span>

@@ -8,7 +8,9 @@
     "dev:css": "tailwindcss -w -i ./styles/app.css -o app/styles/app.css",
     "postinstall": "remix setup node",
     "prettier": "npx prettier --check app styles",
-    "prettier:fix": "npx prettier --write app styles"
+    "prettier:fix": "npx prettier --write app styles",
+    "eslint": "npx eslint --ext .tsx,.ts app/",
+    "eslint:fix": "npx eslint --ext --fix .tsx,.ts app/"
   },
   "dependencies": {
     "@catppuccin/highlightjs": "^0.1.2",
@@ -17,6 +19,7 @@
     "@remix-run/vercel": "^1.7.0",
     "@vercel/node": "^2.4.4",
     "clsx": "^1.2.1",
+    "framer-motion": "^10.12.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
@@ -33,6 +36,7 @@
     "autoprefixer": "^10.4.8",
     "concurrently": "^7.4.0",
     "eslint": "^8.20.0",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
     "postcss": "^8.4.16",
     "prettier": "^2.7.1",
     "remix": "^1.7.0",
