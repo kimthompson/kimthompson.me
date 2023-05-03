@@ -1,9 +1,4 @@
-type Props = {
-  // posts: [any]
-  // isDraft?: boolean
-}
-
-export default function(props: Props) {
+export default function() {
   return (
     <article className="resume text-sm lg:text-md text-gray-900 dark:text-slate-100 mx-5 sm:mx-10 font-light">
       <section className="summary">
