@@ -29,6 +29,9 @@ module.exports = {
       animation: {
         wiggle: 'wiggle 0.5s linear infinite',
       },
+      screens: {
+        'print': { 'raw': 'print' },
+      },
       typography: (theme) => ({
         DEFAULT: {
           css: {
