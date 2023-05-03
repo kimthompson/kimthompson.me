@@ -99,7 +99,7 @@ export default function() {
                 <li>Proposed that we use Next.js for our rebuild of MPR News when we ran into trouble getting React 16.x to play nice with server-side rendering. Built a vertical slice of our website in the next 48 hours that got all stakeholders on board.</li>
                 <li>Reworked APM Reports to pass all of Google’s AMP requirements, increasing traffic on their breaking stories threefold.</li>
                 <li>Architected the first version of YourClassical for iOS, Android, and web built with React Native. Presented it to the whole technology division.</li>
-                <li>Pushed our React component libraries onto NPM, as MPR is in part a public service.</li>
+                <li>Pushed our React component libraries on NPM, as MPR is in part a public service.</li>
               </ul>
               <span className="font-heading italic text-xs text-indigo-500 ml-5">Relevant tech: React, JavaScript, TypeScript, Node.js, Next.js, HTML, CSS, React Native, Ruby on Rails, GraphQL, PHP</span>
             </li>
