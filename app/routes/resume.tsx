@@ -117,7 +117,7 @@ export default function() {
             <li className="mb-4">
               <h3 className="font-heading italic text-md lg:text-lg flex justify-between flex-wrap">Ameriprise Financial, Minneapolis, MN <span>Feb 2017 &mdash; Aug 2018</span></h3>
               <h4 className="font-heading italic mb-2">Technology Leadership Development Program Trainee</h4>
-              <p>Rotated between three different positions over the course of 18 months as part of a competitive program for recent college graduates. Learned the basics of being both a business analyst and a developer, which solidified my desire to be a developer. </p>
+              <p>Rotated between three positions over 18 months as part of a competitive program for recent college graduates. Learned the basics of being both a business analyst and a developer, which solidified my desire to be a developer. </p>
               <ul className="list-disc ml-5 mt-1">
                 <li>Redesigned the frontend for Ameriprise’s advisor compensation application, working within the limits of the old JSP, IE-only application that nobody could run anymore.</li>
                 <li>Helped design, test, and polish a client-facing dashboard built with Backbone.js.</li>
