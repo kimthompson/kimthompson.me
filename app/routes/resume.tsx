@@ -49,9 +49,9 @@ export default function() {
                 Saint Paul, MN 55119
               </li>
               <li><a className="text-pink-500 transition ease-in-out duration-300 hover:text-gray-900 dark:hover:text-slate-100" href="tel:952-215-7255">(952) 215-7255</a></li>
-              <li><a className="text-pink-500 transition ease-in-out duration-300 hover:text-gray-900 dark:hover:text-slate-100" href="mailto:kim.thompson.dev@proton.me">kim.thompson.dev@proton.me</a></li>
+              <li><a className="text-pink-500 transition ease-in-out duration-300 hover:text-gray-900 dark:hover:text-slate-100" href="mailto:kim.freechack@proton.me">kim.freechack@proton.me</a></li>
               <li><a className="text-pink-500 transition ease-in-out duration-300 hover:text-gray-900 dark:hover:text-slate-100" href="https://github.com/kimthompson">github.com/kimthompson</a></li>
-              <li><a className="text-pink-500 transition ease-in-out duration-300 hover:text-gray-900 dark:hover:text-slate-100" href="https://www.kimthompson.me">kimthompson.me</a></li>
+              <li><a className="text-pink-500 transition ease-in-out duration-300 hover:text-gray-900 dark:hover:text-slate-100" href="https://www.kimfreechack.com">kimfreechack.com</a></li>
               <li><a className="text-pink-500 transition ease-in-out duration-300 hover:text-gray-900 dark:hover:text-slate-100" href="https://www.linkedin.com/in/kimberlyannthompson/">linkedin.com/in/kimberlyannthompson</a></li>
             </ul>
           </section>

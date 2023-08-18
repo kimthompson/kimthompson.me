@@ -23,7 +23,7 @@ export default function Footer() {
         <a href="https://github.com/kimthompson">
           <FiGithub className="h-8 w-8 p-1 mx-3 rounded-md text-slate-100 dark:text-gray-900 transition ease-in-out duration-300 bg-gradient-to-br from-pink-500 via-purple-500 to-teal-500 hover:-translate-y-1 hover:scale-110" />
         </a>
-        <a href="mailto:kim.thompson.dev@proton.me">
+        <a href="mailto:kim.freechack@proton.me">
           <FiMail className="h-8 w-8 p-1 mx-3 rounded-md text-slate-100 dark:text-gray-900 transition ease-in-out duration-300 bg-gradient-to-br from-pink-500 via-purple-500 to-teal-500 hover:-translate-y-1 hover:scale-110" />
         </a>
         <a href="https://www.linkedin.com/in/kimberlyannthompson/">

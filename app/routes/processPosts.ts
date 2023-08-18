@@ -2,6 +2,7 @@ import * as ONE from './blog/testing-at-mpr.mdx'
 import * as TWO from './blog/on-basecamp.mdx'
 import * as THREE from './blog/digital-garden-and-update.mdx'
 import * as FOUR from './blog/how-to-add-animations-to-remix-navigation.mdx'
+import * as FIVE from './blog/married-fanfest-honeymoon-covid.mdx'
 
 import * as one from './ideas/thoughts-on-stray.mdx'
 import * as two from './ideas/an-ode-to-victor-mono.mdx'
@@ -9,6 +10,7 @@ import * as three from './ideas/just-enough-uikit-to-be-dangerous.mdx'
 import * as four from './ideas/a-rolling-list-of-swiftui-tips-and-tricks.mdx'
 import * as five from './ideas/uialertcontrollers-in-swiftui.mdx'
 import * as six from './ideas/pourover-fiend-dev-journal.mdx'
+// import * as seven from './ideas/cocktail-scaling-tool.mdx'
 
 function postFromModule(mod: any) {
   return {
@@ -24,7 +26,7 @@ function sortPostsByDate(a: any, b: any) {
 }
 
 export const data = {
-  posts: [postFromModule(ONE), postFromModule(TWO), postFromModule(THREE), postFromModule(FOUR)].sort(sortPostsByDate),
+  posts: [postFromModule(ONE), postFromModule(TWO), postFromModule(THREE), postFromModule(FOUR), postFromModule(FIVE)].sort(sortPostsByDate),
   drafts: [
     postFromModule(one),
     postFromModule(two),
@@ -32,5 +34,6 @@ export const data = {
     postFromModule(four),
     postFromModule(five),
     postFromModule(six),
+    // postFromModule(seven),
   ].sort(sortPostsByDate),
 }
